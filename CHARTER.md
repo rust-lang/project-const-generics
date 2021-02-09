@@ -12,6 +12,6 @@ Improving the user experience when using and working on const generics. This inc
 
 ## Constraints And Considerations
 
-At least in the near future we will mostly just the 4 items mentioned above.
+At least for the near future, we will mostly focus on the items mentioned above.
 
 <!-- Why not just do everything, it's not like burnout is a problem in open source -->
