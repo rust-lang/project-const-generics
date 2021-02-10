@@ -1,32 +1,17 @@
-# {{GROUP_NAME}} Charter
-<!--
- Provide an introduction summarising the goals and motivation behind your
- project group.
--->
+# Const Generics Charter
+
+The goal of this group is to both improve and extend the support for const generics.
 
 ## Goals
 
-<!--
- Explain what changes you'd like to see your group your group to focus on, and
- how you plan to approach these issues. Focus on explaining the highest possible
- level of your change.
--->
+Improving the user experience when using and working on const generics. This includes both improvements to diagnostics for the already stabilized parts as well as adding new features:
+
+- const param defaults `struct Foo<const N: usize = 3>`
+- more const param types, most importantly user defined types and `&'static str`
+- allowing complex generic operations in constants
 
 ## Constraints And Considerations
 
-<!--
- Explain the scope of your group, what you have chosen not to include in
- your goals, and your motivations behind making them non-goals.
--->
+At least for the near future, we will mostly focus on the items mentioned above.
 
-
-## Membership
-
-<!--
- Mention your initial membership and who has decided take the roles of
- shepherd(s) and liason.
--->
-
-**Shepherd:**
-**Team Liason:**
-**Members:**
+<!-- Why not just do everything, it's not like burnout is a problem in open source -->
