@@ -167,30 +167,18 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#group_name-charter" id="group_name-charter">{{GROUP_NAME}} Charter</a></h1>
-<!--
- Provide an introduction summarising the goals and motivation behind your
- project group.
--->
+                        <h1><a class="header" href="#const-generics-charter" id="const-generics-charter">Const Generics Charter</a></h1>
+<p>The goal of this group is to both improve and extend the support for const generics.</p>
 <h2><a class="header" href="#goals" id="goals">Goals</a></h2>
-<!--
- Explain what changes you'd like to see your group your group to focus on, and
- how you plan to approach these issues. Focus on explaining the highest possible
- level of your change.
--->
+<p>Improving the user experience when using and working on const generics. This includes both improvements to diagnostics for the already stabilized parts as well as adding new features:</p>
+<ul>
+<li>const param defaults <code>struct Foo&lt;const N: usize = 3&gt;</code></li>
+<li>more const param types, most importantly user defined types and <code>&amp;'static str</code></li>
+<li>allowing complex generic operations in constants</li>
+</ul>
 <h2><a class="header" href="#constraints-and-considerations" id="constraints-and-considerations">Constraints And Considerations</a></h2>
-<!--
- Explain the scope of your group, what you have chosen not to include in
- your goals, and your motivations behind making them non-goals.
--->
-<h2><a class="header" href="#membership" id="membership">Membership</a></h2>
-<!--
- Mention your initial membership and who has decided take the roles of
- shepherd(s) and liason.
--->
-<p><strong>Shepherd:</strong>
-<strong>Team Liason:</strong>
-<strong>Members:</strong></p>
+<p>At least for the near future, we will mostly focus on the items mentioned above.</p>
+<!-- Why not just do everything, it's not like burnout is a problem in open source -->
 
                     </main>
 
