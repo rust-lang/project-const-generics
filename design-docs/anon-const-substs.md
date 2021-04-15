@@ -101,8 +101,8 @@ fn main() {
 
 Discussed in the following meetings: [2021.03.23](../meetings/2021.03.23-ct-in-where-bounds.md)
 
-Not yet solved, requires us to either change typeck to not evaluate constants without checking their
-where clauses or to stop assuming ctfe to only deal with well typed MIR.
+Probably solved by retypechecking the MIR of anonymous constants before const evaluating them.
+Therefore waiting on implementation work.
 
 
 
