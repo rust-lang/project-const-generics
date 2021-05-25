@@ -37,6 +37,7 @@ Welcome to the repository for the Const Generics Project Group! This is the
 repository we use to organise our work. Please refer to our [charter] as well
 as our [github pages website][gh-pages] for more information on our goals and
 current scope.
+
 [gh-pages]: https://rust-lang.github.io/{{GROUP_SLUG}}
 
 [charter]: ./CHARTER.md
