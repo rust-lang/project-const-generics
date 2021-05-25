@@ -2,7 +2,7 @@
 
 ## What is this
 
-The "status quo" stores are here to state our "theory of the case". That is, they present (and prove) our hypotheses as to what the various challenges are for users of Async I/O in Rust. These hypotheses are presented in narrative form, by telling the story of a specific [character] as they try (and typically fail in dramatic fashion) to achieve their goals.
+The "status quo" stores are here to state our "theory of the case". That is, they present (and prove) our hypotheses as to what the various challenges are for users of Const Generics in Rust. These hypotheses are presented in narrative form, by telling the story of a specific [character] as they try (and typically fail in dramatic fashion) to achieve their goals.
 
 [character]: ./characters.md
 

@@ -9,7 +9,7 @@ This page describes the process for contributing to the vision doc.
 
 ## Who owns this document?
 
-This document is owned and maintained by the leads of the Const Generics Working Group.
+This document is owned and maintained by the leads of the project-const-generics group.
 They decide what content to accept or reject. 
 This decision is made in consultation with the Rust teams that will be making the ultimate decisions. 
 For example, if a design doc or part of the shiny future is describing a new language feature, the leads ought to  discuss that with the language design team, since that team will ultimately have to approve the RFCs for its design.
