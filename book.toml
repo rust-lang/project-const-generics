@@ -1,10 +1,10 @@
 [book]
-authors = ["{{GROUP_NAME}} Members"]
+authors = ["Const Generics Project Group Members"]
 language = "en"
 multilingual = false
 src = "."
-title = "{{GROUP_NAME}} {{GROUP_TYPE}} Group"
+title = "Const Generics Project Group"
 
 [output.html]
 no-section-label=true
-git-repository-url="https://github.com/rust-lang/{{GROUP_SLUG}}"
+git-repository-url="https://github.com/rust-lang/project-const-generics"
