@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>👋🏽 Welcome - Const Generics Project Group</title>
+        <title>😱 Status quo - Const Generics Project Group</title>
         
         
 
@@ -18,28 +18,28 @@
         <meta name="theme-color" content="#ffffff" />
 
         
-        <link rel="icon" href="favicon.svg">
+        <link rel="icon" href="../favicon.svg">
         
         
-        <link rel="shortcut icon" href="favicon.png">
+        <link rel="shortcut icon" href="../favicon.png">
         
-        <link rel="stylesheet" href="css/variables.css">
-        <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
         
-        <link rel="stylesheet" href="css/print.css" media="print">
+        <link rel="stylesheet" href="../css/print.css" media="print">
         
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
         
-        <link rel="stylesheet" href="fonts/fonts.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
         
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="highlight.css">
-        <link rel="stylesheet" href="tomorrow-night.css">
-        <link rel="stylesheet" href="ayu-highlight.css">
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
         
@@ -49,7 +49,7 @@
     <body>
         <!-- Provide site root to javascript -->
         <script type="text/javascript">
-            var path_to_root = "";
+            var path_to_root = "../";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
@@ -95,7 +95,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html" class="active">👋🏽 Welcome</a></li><li class="chapter-item expanded "><a href="CHARTER.html">📜 Charter</a></li><li class="chapter-item expanded "><a href="vision.html">🔮 The vision</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="vision/characters.html">🙋‍♀️ Cast of characters</a></li><li class="chapter-item expanded "><a href="vision/status_quo.html">😱 Status quo</a></li><li class="chapter-item expanded "><a href="vision/shiny_future.html">✨ Shiny future</a></li><li class="chapter-item expanded "><a href="vision/roadmap.html">📅 Roadmap for 2021</a></li><li class="chapter-item expanded "><a href="vision/how_to_vision_doc.html">❓How to vision doc</a></li></ol></li><li class="chapter-item expanded "><a href="draft-rfcs/index.html">✏️ Draft RFCs</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html">👋🏽 Welcome</a></li><li class="chapter-item expanded "><a href="../CHARTER.html">📜 Charter</a></li><li class="chapter-item expanded "><a href="../vision.html">🔮 The vision</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../vision/characters.html">🙋‍♀️ Cast of characters</a></li><li class="chapter-item expanded "><a href="../vision/status_quo.html" class="active">😱 Status quo</a></li><li class="chapter-item expanded "><a href="../vision/shiny_future.html">✨ Shiny future</a></li><li class="chapter-item expanded "><a href="../vision/roadmap.html">📅 Roadmap for 2021</a></li><li class="chapter-item expanded "><a href="../vision/how_to_vision_doc.html">❓How to vision doc</a></li></ol></li><li class="chapter-item expanded "><a href="../draft-rfcs/index.html">✏️ Draft RFCs</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -131,7 +131,7 @@
 
                     <div class="right-buttons">
                         
-                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
                         
@@ -169,60 +169,28 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="-const-generics-project-group"><a class="header" href="#-const-generics-project-group">👋🏽 Const Generics Project Group</a></h1>
-<!--
- Status badge advertising the project as being actively worked on. When the
- project has finished be sure to replace the active badge with a badge
- like: https://img.shields.io/badge/status-archived-grey.svg
--->
-<p><img src="https://img.shields.io/badge/status-active-brightgreen.svg" alt="project group status: active" /></p>
-<!--
-FIXME(website)
-[![project group documentation](https://img.shields.io/badge/MDBook-View%20Documentation-blue)][gh-pages]
--->
-<p>The const generics project group implements and designs the <code>const_generics</code> feature. Please refer to our <a href="./CHARTER.html">charter</a> for more information on our goals and current scope.</p>
-<p>Examples:</p>
-<pre><pre class="playground"><code class="language-rust">struct Foo&lt;const N: usize&gt; {
-    field: [u8; N],
-}
-
-fn foo&lt;const N: usize&gt;() -&gt; Foo&lt;N&gt; {
-    Foo {
-        field: [0; N],
-    }
-}
-
-fn main() {
-    match foo::&lt;3&gt;().field {
-        [0, 0, 0] =&gt; {} // ok
-        [_x, _y, _z] =&gt; panic!(),
-    }
-}
-</code></pre></pre>
-<p>Welcome to the repository for the Const Generics Project Group! This is the
-repository we use to organise our work. Please refer to our <a href="./CHARTER.html">charter</a> as well
-as our [github pages website][gh-pages] for more information on our goals and
-current scope.
-[gh-pages]: https://rust-lang.github.io/{{GROUP_SLUG}}</p>
-<h2 id="how-can-i-get-involved"><a class="header" href="#how-can-i-get-involved">How Can I Get Involved?</a></h2>
-<p><a href="https://github.com/rust-lang/team/blob/master/teams/project-const-generics.toml">You can find a list of the current members available
-on <code>rust-lang/team</code>.</a></p>
-<p>If you'd like to participate be sure to check out the relevant stream on <a href="https://rust-lang.zulipchat.com/#narrow/stream/260443-project-const-generics">zulip</a>, feel free to introduce
-yourself over there and ask us any questions you have.</p>
-<h2 id="building-documentation"><a class="header" href="#building-documentation">Building Documentation</a></h2>
-<p>This repository is also an mdbook project. You can view and build it using the
-following command.</p>
-<pre><code>mdbook serve
-</code></pre>
+                        <h1 id="-status-quo-stories"><a class="header" href="#-status-quo-stories">😱 Status quo stories</a></h1>
+<h2 id="what-is-this"><a class="header" href="#what-is-this">What is this</a></h2>
+<p>The &quot;status quo&quot; stores are here to state our &quot;theory of the case&quot;. That is, they present (and prove) our hypotheses as to what the various challenges are for users of Async I/O in Rust. These hypotheses are presented in narrative form, by telling the story of a specific <a href="./characters.html">character</a> as they try (and typically fail in dramatic fashion) to achieve their goals.</p>
+<h3 id="based-on-a-true-story"><a class="header" href="#based-on-a-true-story">Based on a true story</a></h3>
+<p>These stories are not made up. They are always based on real-life experiences of actual people. Each story contains a &quot;Frequently Asked Questions&quot; section, and that will include notes the sources used to create the story. In some cases, it may link to notes or summaries in the <a href="../conversations.html">conversations</a> section, though that is not required. The &quot;Frequently Asked Questions&quot; section also contains a summary of what the &quot;morals&quot; of the story are (i.e., what are the key takeaways), along with answers to questions that people have raised along the way.</p>
+<h3 id="the-stories-provide-data-we-use-to-prioritize-not-a-prioritization-itself"><a class="header" href="#the-stories-provide-data-we-use-to-prioritize-not-a-prioritization-itself">The stories provide data we use to prioritize, not a prioritization itself</a></h3>
+<p><strong>Just because a user story is represented here doesn't mean we're going to be able to fix it right now.</strong> Some of these user stories will indicate more severe problems than others. As we consider the stories, we'll select some subset to try and address; that choice is reflected in the <a href="./roadmap.html">roadmap</a>.</p>
+<h3 id="help-wanted"><a class="header" href="#help-wanted">Help wanted!</a></h3>
+<p>This is not a static document! There are lots of ways you can help to expand it! Take a look at the <a href="./how_to_vision_doc.html">How to Vision Doc</a> for more details.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
+                            <a rel="prev" href="../vision/characters.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
 
                         
-                            <a rel="next" href="CHARTER.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../vision/shiny_future.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -234,9 +202,13 @@ following command.</p>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
+                    <a rel="prev" href="../vision/characters.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
 
                 
-                    <a rel="next" href="CHARTER.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../vision/shiny_future.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 
@@ -259,14 +231,14 @@ following command.</p>
         
 
         
-        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
         
 
-        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
         
