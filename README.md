@@ -1,4 +1,4 @@
-# Const Generics Project Group
+# 👋🏽 Const Generics Project Group
 
 <!--
  Status badge advertising the project as being actively worked on. When the

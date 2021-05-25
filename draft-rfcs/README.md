@@ -1,4 +1,4 @@
-# RFC drafts
+# ✏️ RFC drafts
 
 This folder contains drafts of RFCs that the group is preparing to submit.
 

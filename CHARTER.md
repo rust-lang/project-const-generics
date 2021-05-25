@@ -1,4 +1,4 @@
-# Const Generics Charter
+# 📜  Const Generics Charter
 
 The goal of this group is to both improve and extend the support for const generics.
 
