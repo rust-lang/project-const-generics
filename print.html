@@ -97,7 +97,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html">👋🏽 Welcome</a></li><li class="chapter-item expanded "><a href="CHARTER.html">📜 Charter</a></li><li class="chapter-item expanded "><a href="vision.html">🔮 The vision</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="vision/characters.html">🙋‍♀️ Cast of characters</a></li><li class="chapter-item expanded "><a href="vision/status_quo.html">😱 Status quo</a></li><li class="chapter-item expanded "><a href="vision/shiny_future.html">✨ Shiny future</a></li><li class="chapter-item expanded "><a href="vision/roadmap.html">📅 Roadmap for 2021</a></li><li class="chapter-item expanded "><a href="vision/how_to_vision_doc.html">❓How to vision doc</a></li></ol></li><li class="chapter-item expanded "><a href="draft-rfcs/index.html">✏️ Draft RFCs</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html">👋🏽 Welcome</a></li><li class="chapter-item expanded "><a href="CHARTER.html">📜 Charter</a></li><li class="chapter-item expanded "><a href="vision.html">🔮 The vision</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="vision/characters.html">🙋‍♀️ Cast of characters</a></li><li class="chapter-item expanded "><a href="vision/status_quo.html">😱 Status quo</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="vision/status_quo/array_default.html">Array defaults</a></li><li class="chapter-item expanded "><a href="vision/status_quo/split_first.html">Array split first method</a></li></ol></li><li class="chapter-item expanded "><a href="vision/shiny_future.html">✨ Shiny future</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="vision/shiny_future/array_default.html">Array defaults</a></li><li class="chapter-item expanded "><a href="vision/shiny_future/split_first.html">Array split first method</a></li><li class="chapter-item expanded "><a href="vision/shiny_future/image_type.html">Image type in rust-gpu</a></li></ol></li><li class="chapter-item expanded "><a href="vision/roadmap.html">📅 Roadmap for 2021</a></li><li class="chapter-item expanded "><a href="vision/how_to_vision_doc.html">❓How to vision doc</a></li></ol></li><li class="chapter-item expanded "><a href="draft-rfcs/index.html">✏️ Draft RFCs</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -233,20 +233,418 @@ following command.</p>
 <h2 id="status-and-schedule"><a class="header" href="#status-and-schedule">Status and schedule</a></h2>
 <p><strong>This document is currently being formed.</strong> </p>
 <h2 id="this-is-a-group-effort"><a class="header" href="#this-is-a-group-effort">This is a group effort</a></h2>
-<p>As the leads of the Async Foundation group, Niko and Tyler are driving and organizing this document. But writing it and shaping it is a group effort. If you think there is a part of the async experience that is not reflected here, we want to hear from you! Check out the <a href="./vision/how_to_vision_doc.html">How to vision doc</a> for more details on how to contribute.</p>
+<p>As the leads of the Const Generics group, Niko and Lcnr are driving and organizing this document. But writing it and shaping it is a group effort. If you think there is a part of the const generics experience that is not reflected here, we want to hear from you! Check out the <a href="./vision/how_to_vision_doc.html">How to vision doc</a> for more details on how to contribute.</p>
 <div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="-cast-of-characters"><a class="header" href="#-cast-of-characters">🙋‍♀️ Cast of characters</a></h1>
+<h2 id="what-is-this-1"><a class="header" href="#what-is-this-1">What is this?</a></h2>
+<p>We've created four characters that we use to guide our thinking. These characters are the protagonists of our <a href="vision/./status_quo.html">status quo</a> and <a href="vision/./shiny_future.html">shiny future</a> stories, and they help us to think about the different kinds of priorities and expectations that people bring when using Const Generics in rust. Having names and personalities also makes the stories more fun and approachable.</p>
+<h2 id="the-characters"><a class="header" href="#the-characters">The characters</a></h2>
+<ul>
+<li>Alan: the experienced &quot;GC'd language&quot; developer, new to Rust
+<ul>
+<li><em>Top priority</em>: performance -- that's what he is not getting from current GC'd language</li>
+<li><em>Expectations</em>: absence of memory safety bugs (he gets that now from his GC), strong ecosystem, great tooling</li>
+</ul>
+</li>
+<li>Grace: the systems programming expert, new to Rust
+<ul>
+<li><em>Top priority</em>: memory safety -- that's what she is not getting from C/C++</li>
+<li><em>Expectations</em>: able to do all the things she's used to from C/C++</li>
+</ul>
+</li>
+<li>Niklaus: new programmer from an unconventional background
+<ul>
+<li><em>Top priority</em>: accessibility -- he's learning a lot of new things at once</li>
+<li><em>Expectations</em>: community -- the community enabled him to have early success, and he is excited to have it support him and him grow more</li>
+</ul>
+</li>
+<li>Barbara: the experienced Rust developer
+<ul>
+<li><em>Top priority</em>: overall productivity and long-term maintenance -- she loves Rust, and wants to see it extended to new areas; she has an existing code base to maintain</li>
+<li><em>Expectations</em>: elegance and craftsmanship, fits well with Rust</li>
+</ul>
+</li>
+</ul>
+<h2 id="-frequently-asked-questions"><a class="header" href="#-frequently-asked-questions">🤔 Frequently Asked Questions</a></h2>
+<h3 id="where-do-the-names-come-from"><a class="header" href="#where-do-the-names-come-from">Where do the names come from?</a></h3>
+<p>Famous programming language designers and theorists. <a href="https://en.wikipedia.org/wiki/Alan_Turing">Alan Turing</a>, <a href="https://en.wikipedia.org/wiki/Grace_Hopper">Grace Hopper</a>, <a href="https://en.wikipedia.org/wiki/Niklaus_Wirth">Niklaus Wirth</a>, and <a href="https://en.wikipedia.org/wiki/Barbara_Liskov">Barbara Liskov</a>.</p>
+<h3 id="i-dont-see-myself-in-these-characters-what-should-i-do"><a class="header" href="#i-dont-see-myself-in-these-characters-what-should-i-do">I don't see myself in these characters. What should I do?</a></h3>
+<p>Come to Zulip (#project-const-generics) and talk to us about it! Maybe they need to be adjusted!</p>
+<h3 id="i-see-myself-in-more-than-one-of-these-characters"><a class="header" href="#i-see-myself-in-more-than-one-of-these-characters">I see myself in more than one of these characters!</a></h3>
+<p>Yeah, me too.</p>
 <div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="-status-quo-stories"><a class="header" href="#-status-quo-stories">😱 Status quo stories</a></h1>
-<h2 id="what-is-this-1"><a class="header" href="#what-is-this-1">What is this</a></h2>
-<p>The &quot;status quo&quot; stores are here to state our &quot;theory of the case&quot;. That is, they present (and prove) our hypotheses as to what the various challenges are for users of Async I/O in Rust. These hypotheses are presented in narrative form, by telling the story of a specific <a href="vision/./characters.html">character</a> as they try (and typically fail in dramatic fashion) to achieve their goals.</p>
+<h2 id="what-is-this-2"><a class="header" href="#what-is-this-2">What is this</a></h2>
+<p>The &quot;status quo&quot; stores are here to state our &quot;theory of the case&quot;. That is, they present (and prove) our hypotheses as to what the various challenges are for users of Const Generics in Rust. These hypotheses are presented in narrative form, by telling the story of a specific <a href="vision/./characters.html">character</a> as they try (and typically fail in dramatic fashion) to achieve their goals.</p>
 <h3 id="based-on-a-true-story"><a class="header" href="#based-on-a-true-story">Based on a true story</a></h3>
 <p>These stories are not made up. They are always based on real-life experiences of actual people. Each story contains a &quot;Frequently Asked Questions&quot; section, and that will include notes the sources used to create the story. In some cases, it may link to notes or summaries in the <a href="vision/../conversations.html">conversations</a> section, though that is not required. The &quot;Frequently Asked Questions&quot; section also contains a summary of what the &quot;morals&quot; of the story are (i.e., what are the key takeaways), along with answers to questions that people have raised along the way.</p>
 <h3 id="the-stories-provide-data-we-use-to-prioritize-not-a-prioritization-itself"><a class="header" href="#the-stories-provide-data-we-use-to-prioritize-not-a-prioritization-itself">The stories provide data we use to prioritize, not a prioritization itself</a></h3>
 <p><strong>Just because a user story is represented here doesn't mean we're going to be able to fix it right now.</strong> Some of these user stories will indicate more severe problems than others. As we consider the stories, we'll select some subset to try and address; that choice is reflected in the <a href="vision/./roadmap.html">roadmap</a>.</p>
 <h3 id="help-wanted"><a class="header" href="#help-wanted">Help wanted!</a></h3>
 <p>This is not a static document! There are lots of ways you can help to expand it! Take a look at the <a href="vision/./how_to_vision_doc.html">How to Vision Doc</a> for more details.</p>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="-status-quo-story-barbara-wants-to-implement-default-for-all-array-lengths"><a class="header" href="#-status-quo-story-barbara-wants-to-implement-default-for-all-array-lengths">😱 Status quo story: Barbara wants to implement <code>Default</code> for all array lengths</a></h1>
+<p>Barbara is working on <code>std</code>. She wants to implement <code>Default</code> for all array types. Currently, it is implemented for <code>N &lt;= 32</code> using a macro (<a href="https://doc.rust-lang.org/nightly/src/core/array/mod.rs.html#391">link</a>)</p>
+<p>She thinks &quot;Ah, I can use min-const-generics for this!&quot; and goes to write</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>impl&lt;T, const N: usize&gt; Default for [T; N]
+where
+    T: Default,
+{
+    fn default() -&gt; Self {
+        
+    }
+
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>So far so good, but then she realizes she can't figure out what to write in the body. At first she tries:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>impl&lt;T, const N: usize&gt; Default for [T; N]
+where
+    T: Default,
+{
+    fn default() -&gt; Self {
+        [T::default(); N]
+    }
+
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>but this won't compile:</p>
+<pre><code>error[E0277]: the trait bound `T: Copy` is not satisfied
+  --&gt; src/lib.rs:10:9
+   |
+10 |         [T::default(); N]
+   |         ^^^^^^^^^^^^^^^^^ the trait `Copy` is not implemented for `T`
+   |
+   = note: the `Copy` trait is required because the repeated element will be copied
+help: consider further restricting this bound
+   |
+7  |     T: MyDefault + Copy,
+   |                  ^^^^^^
+</code></pre>
+<p>&quot;Ah,&quot; she realizes, &quot;this would be cloning a single value of <code>T</code>, but I want to make <code>N</code> distinct values. How can I do that?&quot;</p>
+<p>She asks on Zulip and lcnr tells her that there is this <a href="https://doc.rust-lang.org/std/primitive.array.html#method.map"><code>map</code> function  defined on arrays</a>. She could write:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>impl&lt;T, const N: usize&gt; Default for [T; N]
+where
+    T: Default,
+{
+    fn default() -&gt; Self {
+        [(); N].map(|()| T::default())
+    }
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>&quot;That code will build,&quot; lcnr warns her, &quot;but we're not going to be able to ship it. Test it and see.&quot; Barbara runs the tests and finds she is getting a failure. The following test no longer builds:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn generic&lt;T&gt;() -&gt; [T; 0] {
+    Default::default()
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>&quot;Ah,&quot; she says, &quot;I see that <code>Default</code> is implemented for any type <code>[T; 0]</code>, regardless of whether <code>T: Default</code>. That makes sense. Argh!&quot;</p>
+<p>Next she tries (this already relies on a nightly feature)</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>impl&lt;T: Trait, const N: usize&gt; Default for [T; N]
+where
+    T: Default,
+    N != 0, // nightly feature!
+{
+    fn default() -&gt; Self {
+        [(); N].map(|()| T::default())
+    }
+}
+
+impl&lt;T&gt; Trait for [T; 0] {
+    // ...
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>While this does seem to compile, when trying to use it, it causes an unexpected error.</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn foo&lt;T: Trait, const N: usize&gt;() -&gt; [u8; N] {
+    &lt;[T; N] as Trait&gt;::ASSOC //~ ERROR `[T; N]` does not implement `Trait`
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>The compiler can't tell that <code>N == 0 || N != 0</code> is true for all possible <code>N</code>, so it can't infer <code>[T; N]: Trait</code> from <code>T: Trait</code>.</p>
+<p>Frustrated, Barbara gives up and goes looking for another issue to fix.</p>
+<p>Even worse, Barbara notices the same problem for <code>serde::Deserialize</code> and decides to
+abandon backwards compatibility in favor of a brighter future.</p>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="-status-quo-array-split-first-method"><a class="header" href="#-status-quo-array-split-first-method">😱 Status quo: Array split first method</a></h1>
+<p>Barbara is working on her project. She has the idea to write a <code>split_first</code> function that will allow her to split out the first item from a fixed-length array; naturally, the array must be non-empty. It looks something like this:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// Note: this method has an implied where clause that `N - 1` evaluates without 
+// erroring because `N - 1` is in the function signature
+fn split_first&lt;T, const N: usize&gt;(arr: [T; N]) -&gt; (T; [T; N - 1]) {
+    // ...
+    let tail: [T; N - 1] = // ...
+    (head, tail)
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>Next she wants to write a function that uses <code>split_first</code>:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn some_method&lt;const N: usize&gt;(arr: [u8; N]) {
+    let (first, rest) = split_first(arr);
+    for i in rest {
+        // ...
+    }
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>The compiler gives her a compile error:</p>
+<pre><code>error: the constant expression `N-1` is not known to be evaluatable
+2 |     let (first, rest) = split_first(arr);
+  |                         ^^^^^^^^^^^ `N-1` not known to be evaluatable
+info: N may underflow
+help: add a where clause to `some_method`
+  | fn some_method&lt;const N: usize&gt;(arr: [u8; N]) where [(); {N - 1}]:
+</code></pre>
+<p>Barbara hits the 'quick fix' button in her IDE and it inserts the where clause for her- she immediately
+gets a compile error at another spot because she was calling <code>some_method</code> with an empty array:</p>
+<pre><code>error: integer underflow evaluating constant expression
+22 |     some_method([])
+   |     ^^^^^^^^^^^^^^^ `0-1` is not evaluatable
+info: `0-1` must be evaluatable because of this where clause
+  | fn some_method&lt;const N: usize&gt;(arr: [u8; N]) where [(); { N - 1}]:
+  |                                                    ---------------
+</code></pre>
+<p>She also gets a compile error at another spot with a <code>[(); { N - 2; }]:</code> where clause in scope</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn some_other_method&lt;const N: usize&gt;(arr: [u8; N]) where [(); { N - 2; }]: {
+    // ...
+    let (first, rest) = split_first(arr);
+    // ...
+}
+<span class="boring">}
+</span></code></pre></pre>
+<pre><code>error: the constant expression `N-1` is not known to be evaluatable
+2 |     let (first, rest) = split_first(arr);
+  |                         ^^^^^^^^^^^ `N-1` not known to be evaluatable
+info: N may underflow
+help: add a where clause to `some_method`
+  | fn some_method&lt;const N: usize&gt;(arr: [u8; N]) where [(); { N - 2; }}:, [(); { N - 1; }];, {
+</code></pre>
+<p>&quot;What!!! That's silly&quot;- Barbara sighs, hitting the quick fix button and moving on</p>
+<p>(rustc is not currently smart enough to know that <code>N - 2</code> being evaluatable implies <code>N - 1</code>)</p>
+<h2 id="alt-universe-with-post-mono-errors"><a class="header" href="#alt-universe-with-post-mono-errors">Alt Universe with post-mono errors</a></h2>
+<p>Barbara is working on her project. She has the idea to write a <code>split_first</code> function that will allow her to split out the first item from a fixed-length array; naturally, the array must be non-empty. It looks something like this:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// Note: this method has no implied where clause that `N - 1` evaluates
+fn split_first&lt;T, const N: usize&gt;(arr: [T; N]) -&gt; (T; [T; N - 1]) {
+    // ...
+    let tail: [T; N - 1] = // ...
+    (head, tail)
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>Next she wants to write a function that uses <code>split_first</code>:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn some_method&lt;const N: usize&gt;(arr: [u8; N]) {
+    let (first, rest) = split_first(arr);
+    for i in rest {
+        // ...
+    }
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>Everything seems fine when she runs <code>cargo check</code>. Then later she runs <code>cargo test</code> and sees a compilation error:</p>
+<pre><code>error: const evaluation error occurred
+22 |    let tail: [T; N - 1] = // ...
+   |                  ^^^^^ integer underflow, cannot subtract `1` from `0`
+info: this const evaluation was required by `some_other_method`, which contains:
+22 |     some_method([])
+info: `some_method` contains:
+22 |    let (first, rest) = split_first(arr);
+info: `split_first` contains:
+22 |    let tail: [T; N - 1] = // ...
+</code></pre>
 <div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="-shiny-future-where-we-want-to-get-to"><a class="header" href="#-shiny-future-where-we-want-to-get-to">✨ Shiny future: Where we want to get to</a></h1>
 <p>The &quot;shiny future&quot; is here to tell you what we are trying to build over the next 2-3 years. That is, it presents our &quot;best guess&quot; as to what will look like a few years from now. When describing specific features, it also embeds links to <a href="vision/../design_notes.html">design notes</a> that describe the constraints and general plans around that feature.</p>
 <p>Predicting the future is a tricky business! Many of the things described in the &quot;shiny future&quot; doc have a lot of uncertainty. We fully expect that the designs and narratives described in this document will change as we work towards realizing them. When there are areas of particular uncertainty, we use the Frequently Asked Questions and the design docs to call them out.</p>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="-shiny-future-story-barbara-implements-default-for-all-array-lengths"><a class="header" href="#-shiny-future-story-barbara-implements-default-for-all-array-lengths">✨ Shiny future story: Barbara implements <code>Default</code> for all array lengths</a></h1>
+<p>Shiny future of <a href="vision/shiny_future/../status_quo/array_default.html">status quo story</a></p>
+<p>Barbara is working on <code>std</code>. She saw that the newest version of rustc has had some improvements to const generics
+and decides to try implementing <code>Default</code> for all array lengths. She goes to write:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>impl&lt;T, const N: usize&gt; Default for [T; N]
+where
+    T: Default,
+{
+    fn default() -&gt; Self {
+        /* snip */
+    }
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>The code builds just fine but then she sees a test failing:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn generic&lt;T&gt;() -&gt; [T; 0] {
+    Default::default()
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>&quot;Ah,&quot; she says, &quot;I see that Default is implemented for any type [T; 0], regardless of whether T: Default. That makes sense. Argh!&quot;</p>
+<p>Next she tries to write:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>impl&lt;T, const N: usize&gt; Default for [T; N]
+where
+    T: Default,
+    { N &gt; 0 },
+{
+    fn default() -&gt; Self {
+        /* snip */
+    }
+}
+
+impl&lt;T&gt; Default for [T; 0] {
+    fn default() -&gt; Self {
+        []
+    }
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>This compiles just fine and the test is passing. She decides to submit a PR where her reviewer asks her to 
+add a test to make sure that <code>[T; N]: Default</code> holds when <code>T: Default</code> as this didn't used to work</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn exhaustive_default_impl&lt;T: Default, const N: usize&gt;() -&gt; [T; N] {
+    &lt;[T; N] as Default&gt;::default()
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>This test passes just fine, &quot;yay const generics ✨&quot; she says</p>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="-shiny-future-story-array-split-first-method"><a class="header" href="#-shiny-future-story-array-split-first-method">✨ Shiny future story: Array split first method</a></h1>
+<p>Shiny future of <a href="vision/shiny_future/../status_quo/split_first.html">status quo story</a></p>
+<p>Barbara is working on her project. She has the idea to write a <code>split_first</code> function that will allow her to split out the first item from a fixed-length array; naturally, the array must be non-empty. It looks something like this:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// Note: this method has an implied where clause that `N - 1` evaluates without 
+// erroring because `N - 1` is in the function signature
+fn split_first&lt;T, const N: usize&gt;(arr: [T; N]) -&gt; (T; [T; N - 1]) {
+    // ...
+    let tail: [T; N - 1] = // ...
+    (head, tail)
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>Next she wants to write a function that uses <code>split_first</code>:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn some_method&lt;const N: usize&gt;(arr: [u8; N]) {
+    let (first, rest) = split_first(arr);
+    for i in rest {
+        // ...
+    }
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>The compiler gives her a compile error:</p>
+<pre><code>error: the constant expression `N - 1` is not known to evaluate without underflowing
+2 |     let (first, rest) = split_first(arr);
+  |                         ^^^^^^^^^^^ `N - 1` not known to be evaluatable without underflowing
+note: required by this expression in `split_first`'s function signature
+5 |     fn split_first&lt;T, const N: usize&gt;(arr: [T; N]) -&gt; (T; [T; N - 1]) {
+  |                                                               ^^^^^
+help: add a where clause to `some_method`
+  | fn some_method&lt;const N: usize&gt;(arr: [u8; N]) where { N &gt; 0; }
+</code></pre>
+<p>Barbara hits the 'quick fix' button in her IDE and it inserts the where clause for her- she immediately
+gets a compile error at another spot because she was calling <code>some_method</code> with an empty array:</p>
+<pre><code>error: the constant `0` is not greater than `0`
+22 |     some_method([])
+info: `0` must be greater than `0` because of this where clause
+  | fn some_method&lt;const N: usize&gt;(arr: [u8; N]) where { N &gt; 0; }
+  |                                                    ----------
+</code></pre>
+<p>Barbara has no more compile errors, even the following code is compiling:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn some_other_method&lt;const N: usize&gt;(arr: [u8; N]) where { N &gt; 1; } {
+    // ...
+    let (first, rest) = split_first(arr);
+    // ...
+}
+<span class="boring">}
+</span></code></pre></pre>
+<div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="-shiny-future-story-image-type-in-rust-gpu"><a class="header" href="#-shiny-future-story-image-type-in-rust-gpu">✨ Shiny future story: Image type in rust-gpu</a></h1>
+<p>Barbara is working on rust-gpu. In that project, she has a struct <code>Image</code> that represents GPU images. There are a number of constant parameters allowing this type to be heavily customized in a number of ways. In some cases, helper methods are only available for images with particular formats. She writes the struct declaration:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct Image&lt;
+    SampledType: SampleType&lt;FORMAT&gt;,
+    const DIM: Dimensionality,
+    const DEPTH: ImageDepth,
+    const ARRAYED: Arrayed,
+    const MULTISAMPLED: Multisampled,
+    const SAMPLED: Sampled,
+    const FORMAT: ImageFormat,
+    const ACCESS_QUALIFIER: Option&lt;AccessQualifier&gt;,
+&gt;(PhantomData&lt;SampledType&gt;);
+<span class="boring">}
+</span></code></pre></pre>
+<p>Barbara gets a few compile errors about her types used as a const param not implementing <code>StructuralEq</code> so she derives that and moves on.
+She then wants to write some methods that only work for images in some specific formats:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>impl&lt;
+    SampledType: SampleType&lt;FORMAT&gt;,
+    const DIM: Dimensionality,
+    const DEPTH: ImageDepth,
+    const ARRAYED: Arrayed,
+    const MULTISAMPLED: Multisampled,
+    const SAMPLED: Sampled,
+    const FORMAT: ImageFormat,
+    const ACCESS_QUALIFIER: Option&lt;AccessQualifier&gt;,
+&gt; Image&lt;SampledType, DIM, DEPTH, ARRAYED, MULTISAMPLED, SAMPLED, FORMAT, ACCESS_QUALIFIER&gt; {
+    pub fn example_method(/* snip */)
+    where
+        { some_condition(DEPTH, MULTISAMPLED) }
+    { /* snip */ }
+}
+
+const fn some_condition(a: ImageDepth, m: Multisampled) -&gt; bool {
+    match (a, m) {
+        /* snip */
+    }
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>This compiles just fine and Barbara moves on to more complicated things </p>
 <div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="-the-roadmap-what-were-doing-in-2021"><a class="header" href="#-the-roadmap-what-were-doing-in-2021">📅 The roadmap: what we're doing in 2021</a></h1>
 <p>This page describes the current plans for 2021.
 It is updated on a monthly basis.</p>
@@ -260,12 +658,11 @@ It is updated on a monthly basis.</p>
 </tbody></table>
 <h2 id="roadmap-items"><a class="header" href="#roadmap-items">Roadmap items</a></h2>
 <table><thead><tr><th>Plan</th><th>Owner</th><th>Status</th><th>Last updated</th></tr></thead><tbody>
-<tr><td><a href="vision/../design_docs/async_fns_in_traits.html">Async functions in traits</a></td><td>nikomatsakis</td><td>🥬</td><td>2021-02</td></tr>
 </tbody></table>
 <div id="chapter_begin" style="break-before: page; page-break-before: always;"></div><h1 id="-how-to-vision-doc"><a class="header" href="#-how-to-vision-doc">❓ How to vision doc</a></h1>
 <p>This page describes the process for contributing to the vision doc.</p>
 <h2 id="who-owns-this-document"><a class="header" href="#who-owns-this-document">Who owns this document?</a></h2>
-<p>This document is owned and maintained by the leads of the Const Generics Working Group.
+<p>This document is owned and maintained by the leads of the project-const-generics group.
 They decide what content to accept or reject. 
 This decision is made in consultation with the Rust teams that will be making the ultimate decisions. 
 For example, if a design doc or part of the shiny future is describing a new language feature, the leads ought to  discuss that with the language design team, since that team will ultimately have to approve the RFCs for its design.</p>

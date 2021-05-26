@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>😱 Status quo - Const Generics Project Group</title>
+        <title>Array defaults - Const Generics Project Group</title>
         
         
 
@@ -18,28 +18,28 @@
         <meta name="theme-color" content="#ffffff" />
 
         
-        <link rel="icon" href="../favicon.svg">
+        <link rel="icon" href="../../favicon.svg">
         
         
-        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="shortcut icon" href="../../favicon.png">
         
-        <link rel="stylesheet" href="../css/variables.css">
-        <link rel="stylesheet" href="../css/general.css">
-        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
         
-        <link rel="stylesheet" href="../css/print.css" media="print">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
         
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
         
-        <link rel="stylesheet" href="../fonts/fonts.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
         
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="../highlight.css">
-        <link rel="stylesheet" href="../tomorrow-night.css">
-        <link rel="stylesheet" href="../ayu-highlight.css">
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
         
@@ -49,7 +49,7 @@
     <body>
         <!-- Provide site root to javascript -->
         <script type="text/javascript">
-            var path_to_root = "../";
+            var path_to_root = "../../";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
@@ -95,7 +95,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html">👋🏽 Welcome</a></li><li class="chapter-item expanded "><a href="../CHARTER.html">📜 Charter</a></li><li class="chapter-item expanded "><a href="../vision.html">🔮 The vision</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../vision/characters.html">🙋‍♀️ Cast of characters</a></li><li class="chapter-item expanded "><a href="../vision/status_quo.html" class="active">😱 Status quo</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../vision/status_quo/array_default.html">Array defaults</a></li><li class="chapter-item expanded "><a href="../vision/status_quo/split_first.html">Array split first method</a></li></ol></li><li class="chapter-item expanded "><a href="../vision/shiny_future.html">✨ Shiny future</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../vision/shiny_future/array_default.html">Array defaults</a></li><li class="chapter-item expanded "><a href="../vision/shiny_future/split_first.html">Array split first method</a></li><li class="chapter-item expanded "><a href="../vision/shiny_future/image_type.html">Image type in rust-gpu</a></li></ol></li><li class="chapter-item expanded "><a href="../vision/roadmap.html">📅 Roadmap for 2021</a></li><li class="chapter-item expanded "><a href="../vision/how_to_vision_doc.html">❓How to vision doc</a></li></ol></li><li class="chapter-item expanded "><a href="../draft-rfcs/index.html">✏️ Draft RFCs</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../index.html">👋🏽 Welcome</a></li><li class="chapter-item expanded "><a href="../../CHARTER.html">📜 Charter</a></li><li class="chapter-item expanded "><a href="../../vision.html">🔮 The vision</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../vision/characters.html">🙋‍♀️ Cast of characters</a></li><li class="chapter-item expanded "><a href="../../vision/status_quo.html">😱 Status quo</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../vision/status_quo/array_default.html">Array defaults</a></li><li class="chapter-item expanded "><a href="../../vision/status_quo/split_first.html">Array split first method</a></li></ol></li><li class="chapter-item expanded "><a href="../../vision/shiny_future.html">✨ Shiny future</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../vision/shiny_future/array_default.html" class="active">Array defaults</a></li><li class="chapter-item expanded "><a href="../../vision/shiny_future/split_first.html">Array split first method</a></li><li class="chapter-item expanded "><a href="../../vision/shiny_future/image_type.html">Image type in rust-gpu</a></li></ol></li><li class="chapter-item expanded "><a href="../../vision/roadmap.html">📅 Roadmap for 2021</a></li><li class="chapter-item expanded "><a href="../../vision/how_to_vision_doc.html">❓How to vision doc</a></li></ol></li><li class="chapter-item expanded "><a href="../../draft-rfcs/index.html">✏️ Draft RFCs</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -131,7 +131,7 @@
 
                     <div class="right-buttons">
                         
-                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
                         
@@ -169,28 +169,78 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="-status-quo-stories"><a class="header" href="#-status-quo-stories">😱 Status quo stories</a></h1>
-<h2 id="what-is-this"><a class="header" href="#what-is-this">What is this</a></h2>
-<p>The &quot;status quo&quot; stores are here to state our &quot;theory of the case&quot;. That is, they present (and prove) our hypotheses as to what the various challenges are for users of Const Generics in Rust. These hypotheses are presented in narrative form, by telling the story of a specific <a href="./characters.html">character</a> as they try (and typically fail in dramatic fashion) to achieve their goals.</p>
-<h3 id="based-on-a-true-story"><a class="header" href="#based-on-a-true-story">Based on a true story</a></h3>
-<p>These stories are not made up. They are always based on real-life experiences of actual people. Each story contains a &quot;Frequently Asked Questions&quot; section, and that will include notes the sources used to create the story. In some cases, it may link to notes or summaries in the <a href="../conversations.html">conversations</a> section, though that is not required. The &quot;Frequently Asked Questions&quot; section also contains a summary of what the &quot;morals&quot; of the story are (i.e., what are the key takeaways), along with answers to questions that people have raised along the way.</p>
-<h3 id="the-stories-provide-data-we-use-to-prioritize-not-a-prioritization-itself"><a class="header" href="#the-stories-provide-data-we-use-to-prioritize-not-a-prioritization-itself">The stories provide data we use to prioritize, not a prioritization itself</a></h3>
-<p><strong>Just because a user story is represented here doesn't mean we're going to be able to fix it right now.</strong> Some of these user stories will indicate more severe problems than others. As we consider the stories, we'll select some subset to try and address; that choice is reflected in the <a href="./roadmap.html">roadmap</a>.</p>
-<h3 id="help-wanted"><a class="header" href="#help-wanted">Help wanted!</a></h3>
-<p>This is not a static document! There are lots of ways you can help to expand it! Take a look at the <a href="./how_to_vision_doc.html">How to Vision Doc</a> for more details.</p>
+                        <h1 id="-shiny-future-story-barbara-implements-default-for-all-array-lengths"><a class="header" href="#-shiny-future-story-barbara-implements-default-for-all-array-lengths">✨ Shiny future story: Barbara implements <code>Default</code> for all array lengths</a></h1>
+<p>Shiny future of <a href="../status_quo/array_default.html">status quo story</a></p>
+<p>Barbara is working on <code>std</code>. She saw that the newest version of rustc has had some improvements to const generics
+and decides to try implementing <code>Default</code> for all array lengths. She goes to write:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>impl&lt;T, const N: usize&gt; Default for [T; N]
+where
+    T: Default,
+{
+    fn default() -&gt; Self {
+        /* snip */
+    }
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>The code builds just fine but then she sees a test failing:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn generic&lt;T&gt;() -&gt; [T; 0] {
+    Default::default()
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>&quot;Ah,&quot; she says, &quot;I see that Default is implemented for any type [T; 0], regardless of whether T: Default. That makes sense. Argh!&quot;</p>
+<p>Next she tries to write:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>impl&lt;T, const N: usize&gt; Default for [T; N]
+where
+    T: Default,
+    { N &gt; 0 },
+{
+    fn default() -&gt; Self {
+        /* snip */
+    }
+}
+
+impl&lt;T&gt; Default for [T; 0] {
+    fn default() -&gt; Self {
+        []
+    }
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>This compiles just fine and the test is passing. She decides to submit a PR where her reviewer asks her to 
+add a test to make sure that <code>[T; N]: Default</code> holds when <code>T: Default</code> as this didn't used to work</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn exhaustive_default_impl&lt;T: Default, const N: usize&gt;() -&gt; [T; N] {
+    &lt;[T; N] as Default&gt;::default()
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>This test passes just fine, &quot;yay const generics ✨&quot; she says</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="../vision/characters.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../vision/shiny_future.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
                         
-                            <a rel="next" href="../vision/status_quo/array_default.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../../vision/shiny_future/split_first.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -202,13 +252,13 @@
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a rel="prev" href="../vision/characters.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../vision/shiny_future.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a rel="next" href="../vision/status_quo/array_default.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../../vision/shiny_future/split_first.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 
@@ -231,14 +281,14 @@
         
 
         
-        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
         
 
-        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
         

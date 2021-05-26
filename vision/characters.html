@@ -95,7 +95,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html">👋🏽 Welcome</a></li><li class="chapter-item expanded "><a href="../CHARTER.html">📜 Charter</a></li><li class="chapter-item expanded "><a href="../vision.html">🔮 The vision</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../vision/characters.html" class="active">🙋‍♀️ Cast of characters</a></li><li class="chapter-item expanded "><a href="../vision/status_quo.html">😱 Status quo</a></li><li class="chapter-item expanded "><a href="../vision/shiny_future.html">✨ Shiny future</a></li><li class="chapter-item expanded "><a href="../vision/roadmap.html">📅 Roadmap for 2021</a></li><li class="chapter-item expanded "><a href="../vision/how_to_vision_doc.html">❓How to vision doc</a></li></ol></li><li class="chapter-item expanded "><a href="../draft-rfcs/index.html">✏️ Draft RFCs</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html">👋🏽 Welcome</a></li><li class="chapter-item expanded "><a href="../CHARTER.html">📜 Charter</a></li><li class="chapter-item expanded "><a href="../vision.html">🔮 The vision</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../vision/characters.html" class="active">🙋‍♀️ Cast of characters</a></li><li class="chapter-item expanded "><a href="../vision/status_quo.html">😱 Status quo</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../vision/status_quo/array_default.html">Array defaults</a></li><li class="chapter-item expanded "><a href="../vision/status_quo/split_first.html">Array split first method</a></li></ol></li><li class="chapter-item expanded "><a href="../vision/shiny_future.html">✨ Shiny future</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../vision/shiny_future/array_default.html">Array defaults</a></li><li class="chapter-item expanded "><a href="../vision/shiny_future/split_first.html">Array split first method</a></li><li class="chapter-item expanded "><a href="../vision/shiny_future/image_type.html">Image type in rust-gpu</a></li></ol></li><li class="chapter-item expanded "><a href="../vision/roadmap.html">📅 Roadmap for 2021</a></li><li class="chapter-item expanded "><a href="../vision/how_to_vision_doc.html">❓How to vision doc</a></li></ol></li><li class="chapter-item expanded "><a href="../draft-rfcs/index.html">✏️ Draft RFCs</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -170,6 +170,42 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="-cast-of-characters"><a class="header" href="#-cast-of-characters">🙋‍♀️ Cast of characters</a></h1>
+<h2 id="what-is-this"><a class="header" href="#what-is-this">What is this?</a></h2>
+<p>We've created four characters that we use to guide our thinking. These characters are the protagonists of our <a href="./status_quo.html">status quo</a> and <a href="./shiny_future.html">shiny future</a> stories, and they help us to think about the different kinds of priorities and expectations that people bring when using Const Generics in rust. Having names and personalities also makes the stories more fun and approachable.</p>
+<h2 id="the-characters"><a class="header" href="#the-characters">The characters</a></h2>
+<ul>
+<li>Alan: the experienced &quot;GC'd language&quot; developer, new to Rust
+<ul>
+<li><em>Top priority</em>: performance -- that's what he is not getting from current GC'd language</li>
+<li><em>Expectations</em>: absence of memory safety bugs (he gets that now from his GC), strong ecosystem, great tooling</li>
+</ul>
+</li>
+<li>Grace: the systems programming expert, new to Rust
+<ul>
+<li><em>Top priority</em>: memory safety -- that's what she is not getting from C/C++</li>
+<li><em>Expectations</em>: able to do all the things she's used to from C/C++</li>
+</ul>
+</li>
+<li>Niklaus: new programmer from an unconventional background
+<ul>
+<li><em>Top priority</em>: accessibility -- he's learning a lot of new things at once</li>
+<li><em>Expectations</em>: community -- the community enabled him to have early success, and he is excited to have it support him and him grow more</li>
+</ul>
+</li>
+<li>Barbara: the experienced Rust developer
+<ul>
+<li><em>Top priority</em>: overall productivity and long-term maintenance -- she loves Rust, and wants to see it extended to new areas; she has an existing code base to maintain</li>
+<li><em>Expectations</em>: elegance and craftsmanship, fits well with Rust</li>
+</ul>
+</li>
+</ul>
+<h2 id="-frequently-asked-questions"><a class="header" href="#-frequently-asked-questions">🤔 Frequently Asked Questions</a></h2>
+<h3 id="where-do-the-names-come-from"><a class="header" href="#where-do-the-names-come-from">Where do the names come from?</a></h3>
+<p>Famous programming language designers and theorists. <a href="https://en.wikipedia.org/wiki/Alan_Turing">Alan Turing</a>, <a href="https://en.wikipedia.org/wiki/Grace_Hopper">Grace Hopper</a>, <a href="https://en.wikipedia.org/wiki/Niklaus_Wirth">Niklaus Wirth</a>, and <a href="https://en.wikipedia.org/wiki/Barbara_Liskov">Barbara Liskov</a>.</p>
+<h3 id="i-dont-see-myself-in-these-characters-what-should-i-do"><a class="header" href="#i-dont-see-myself-in-these-characters-what-should-i-do">I don't see myself in these characters. What should I do?</a></h3>
+<p>Come to Zulip (#project-const-generics) and talk to us about it! Maybe they need to be adjusted!</p>
+<h3 id="i-see-myself-in-more-than-one-of-these-characters"><a class="header" href="#i-see-myself-in-more-than-one-of-these-characters">I see myself in more than one of these characters!</a></h3>
+<p>Yeah, me too.</p>
 
                     </main>
 
