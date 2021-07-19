@@ -41,7 +41,7 @@ fn main() {
 
 Discussed in the following meetings: [2021.02.09](../meetings/2021.02.09-lazy-norm.md), [2021.02.16](../meetings/2021.02.16-lazy-norm.md), [2021.03.09](../meetings/2021.03.09-unused-substs-impl.md)
 
-A solution has been found and is currently getting implemented in [#83086](https://github.com/rust-lang/rust/pull/83086)
+A solution has been found and is currently getting implemented in [#87280](https://github.com/rust-lang/rust/pull/87280)
 
 ### Consts in where bounds can reference themselves
 
