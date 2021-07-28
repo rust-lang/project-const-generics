@@ -4,6 +4,7 @@
 - [📜 Charter](./CHARTER.md)
 - [🔮 The vision](./vision.md)
    - [🙋‍♀️ Cast of characters](./vision/characters.md)
+   - [🔀 Skill Tree](./skill-tree.md)
    - [😱 Status quo](./vision/status_quo.md)
       - [Array defaults](./vision/status_quo/array_default.md)
       - [Array split first method](./vision/status_quo/split_first.md)
