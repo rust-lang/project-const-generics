@@ -5,6 +5,11 @@ multilingual = false
 src = "."
 title = "Const Generics Project Group"
 
+[preprocessor.skill-tree]
+command = "mdbook-skill-tree"
+
 [output.html]
-no-section-label=true
-git-repository-url="https://github.com/rust-lang/project-const-generics"
+no-section-label = true
+git-repository-url = "https://github.com/rust-lang/project-const-generics"
+additional-js = ["viz.js", "panzoom.min.js", "full.render.js", "skill-tree.js"]
+additional-css = ["skill-tree.css", "skill-tree-finetuning.css"]
