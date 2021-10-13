@@ -15,7 +15,7 @@ Anon consts currently inherit all of their parents generic parameters. This brea
 
 [#78369](https://github.com/rust-lang/rust/issues/78369)
 ```rust
-#![feature(lazy_normalization_consts)]
+#![feature(generic_const_exprs)]
 struct P<T: ?Sized>([u8; 1 + 4], T);
 
 fn main() {
@@ -70,7 +70,7 @@ Not yet solved, potentially fixed by improving the query/trait system to deal wi
 We evaluate consts in where clauses without first proving the where clauses of the const itself, potentially causing ICE.
 
 ```rust
-#![feature(const_generics, const_evaluatable_checked)]
+#![feature(generic_const_exprs)]
 
 trait Foo {
     type Assoc;
