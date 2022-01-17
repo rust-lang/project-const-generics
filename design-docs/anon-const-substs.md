@@ -1,13 +1,13 @@
 # Anon consts substs
 
-Currently locked behind `feature(lazy_normalization_consts)` or `feature(const_generics)`, we do not supply anonymous constants
+Currently locked behind `feature(generic_const_exprs)`, we do not supply anonymous constants
 with their parents generics.
 
 Doing so is needed if we want to ever support more complex generic expressions in anonymous constants.
 
 ## Known blockers
 
-Unless said otherwise, "currently" means "with `feature(const_generics)` enabled" for the rest of this document.
+Unless said otherwise, "currently" means "with `feature(generic_const_exprs)` enabled" for the rest of this document.
 
 ### Unused substs
 
@@ -41,7 +41,7 @@ fn main() {
 
 Discussed in the following meetings: [2021.02.09](../meetings/2021.02.09-lazy-norm.md), [2021.02.16](../meetings/2021.02.16-lazy-norm.md), [2021.03.09](../meetings/2021.03.09-unused-substs-impl.md)
 
-A solution has been found and is currently getting implemented in [#87280](https://github.com/rust-lang/rust/pull/87280)
+A potential solution has been merged with [#87280](https://github.com/rust-lang/rust/pull/87280) and reverted in [#92805](https://github.com/rust-lang/rust/pull/92805) as the required changes negatively impacted large parts of the compiler, even these unrelated to const generics. A potentially nicer solution would be to forbid all parameters which aren't explicitly mentioned by anonymous constants. It isn't yet clear how to best implement this.
 
 ### Consts in where bounds can reference themselves
 
@@ -49,8 +49,7 @@ This causes query cycles for code that should compile and already compiles on st
 
 [#79356](https://github.com/rust-lang/rust/issues/79356)
 ```rust
-#![feature(const_generics)]
-#![allow(incomplete_features)]
+#![feature(generic_const_exprs)]
 
 struct Foo<T>(T);
 
