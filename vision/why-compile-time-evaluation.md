@@ -36,7 +36,7 @@ Using const generic items from different libraries should work without issues.
 
 Reading or writing code which can be used at compile time should ideally not be more complex
 than writing other code. Requiring a lot of weird trait bounds or other hacks should be avoided as much as possible.
-Supporting compile time evaluation should not worsen the experience of users, especially for beginners using this code.
+Supporting compile time evaluation should not worsen the experience of users, especially for beginners.
 
 ## Reliable: "if it passes `cargo check`, it works"
 
