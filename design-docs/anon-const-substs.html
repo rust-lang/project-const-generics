@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>❓How to vision doc - Const Generics Project Group</title>
+        <title>Anon const substs - Const Generics Project Group</title>
         <!-- Custom HTML head -->
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
@@ -77,7 +77,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html">👋🏽 Welcome</a></li><li class="chapter-item expanded "><a href="../CHARTER.html">📜 Charter</a></li><li class="chapter-item expanded "><a href="../vision.html">🔮 The vision</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../vision/characters.html">🙋‍♀️ Cast of characters</a></li><li class="chapter-item expanded "><a href="../skill-tree.html">🔀 Skill Tree</a></li><li class="chapter-item expanded "><a href="../vision/status_quo.html">😱 Status quo</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../vision/status_quo/array_default.html">Array defaults</a></li><li class="chapter-item expanded "><a href="../vision/status_quo/split_first.html">Array split first method</a></li></ol></li><li class="chapter-item expanded "><a href="../vision/shiny_future.html">✨ Shiny future</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../vision/shiny_future/array_default.html">Array defaults</a></li><li class="chapter-item expanded "><a href="../vision/shiny_future/split_first.html">Array split first method</a></li><li class="chapter-item expanded "><a href="../vision/shiny_future/image_type.html">Image type in rust-gpu</a></li></ol></li><li class="chapter-item expanded "><a href="../vision/roadmap.html">📅 Roadmap for 2021</a></li><li class="chapter-item expanded "><a href="../vision/how_to_vision_doc.html" class="active">❓How to vision doc</a></li></ol></li><li class="chapter-item expanded "><a href="../meetings/index.html">🔍 Meetings</a></li><li class="chapter-item expanded "><a href="../design-docs/index.html">📚 Design Documents</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../design-docs/anon-const-substs.html">Anon const substs</a></li><li class="chapter-item expanded "><a href="../design-docs/const-eval-requirements.html">Const eval requirements</a></li><li class="chapter-item expanded "><a href="../design-docs/generic-const-param-types.html">Generic const param types</a></li></ol></li><li class="chapter-item expanded "><a href="../draft-rfcs/index.html">✏️ Draft RFCs</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html">👋🏽 Welcome</a></li><li class="chapter-item expanded "><a href="../CHARTER.html">📜 Charter</a></li><li class="chapter-item expanded "><a href="../vision.html">🔮 The vision</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../vision/characters.html">🙋‍♀️ Cast of characters</a></li><li class="chapter-item expanded "><a href="../skill-tree.html">🔀 Skill Tree</a></li><li class="chapter-item expanded "><a href="../vision/status_quo.html">😱 Status quo</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../vision/status_quo/array_default.html">Array defaults</a></li><li class="chapter-item expanded "><a href="../vision/status_quo/split_first.html">Array split first method</a></li></ol></li><li class="chapter-item expanded "><a href="../vision/shiny_future.html">✨ Shiny future</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../vision/shiny_future/array_default.html">Array defaults</a></li><li class="chapter-item expanded "><a href="../vision/shiny_future/split_first.html">Array split first method</a></li><li class="chapter-item expanded "><a href="../vision/shiny_future/image_type.html">Image type in rust-gpu</a></li></ol></li><li class="chapter-item expanded "><a href="../vision/roadmap.html">📅 Roadmap for 2021</a></li><li class="chapter-item expanded "><a href="../vision/how_to_vision_doc.html">❓How to vision doc</a></li></ol></li><li class="chapter-item expanded "><a href="../meetings/index.html">🔍 Meetings</a></li><li class="chapter-item expanded "><a href="../design-docs/index.html">📚 Design Documents</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../design-docs/anon-const-substs.html" class="active">Anon const substs</a></li><li class="chapter-item expanded "><a href="../design-docs/const-eval-requirements.html">Const eval requirements</a></li><li class="chapter-item expanded "><a href="../design-docs/generic-const-param-types.html">Generic const param types</a></li></ol></li><li class="chapter-item expanded "><a href="../draft-rfcs/index.html">✏️ Draft RFCs</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -139,24 +139,98 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="-how-to-vision-doc"><a class="header" href="#-how-to-vision-doc">❓ How to vision doc</a></h1>
-<p>This page describes the process for contributing to the vision doc.</p>
-<h2 id="who-owns-this-document"><a class="header" href="#who-owns-this-document">Who owns this document?</a></h2>
-<p>This document is owned and maintained by the leads of the project-const-generics group.
-They decide what content to accept or reject. 
-This decision is made in consultation with the Rust teams that will be making the ultimate decisions. 
-For example, if a design doc or part of the shiny future is describing a new language feature, the leads ought to  discuss that with the language design team, since that team will ultimately have to approve the RFCs for its design.</p>
-<h2 id="how-to-participate"><a class="header" href="#how-to-participate">How to participate</a></h2>
-<p>For now, you have to join our weekly meetings.</p>
+                        <h1 id="anon-consts-substs"><a class="header" href="#anon-consts-substs">Anon consts substs</a></h1>
+<p>Currently locked behind <code>feature(generic_const_exprs)</code>, we do not supply anonymous constants
+with their parents generics.</p>
+<p>Doing so is needed if we want to ever support more complex generic expressions in anonymous constants.</p>
+<h2 id="known-blockers"><a class="header" href="#known-blockers">Known blockers</a></h2>
+<p>Unless said otherwise, &quot;currently&quot; means &quot;with <code>feature(generic_const_exprs)</code> enabled&quot; for the rest of this document.</p>
+<h3 id="unused-substs"><a class="header" href="#unused-substs">Unused substs</a></h3>
+<p>Anon consts currently inherit all of their parents generic parameters. This breaks code already compiling on stable and causes unexpected compilation failures:</p>
+<p><a href="https://github.com/rust-lang/rust/issues/78369">#78369</a></p>
+<pre><pre class="playground"><code class="language-rust">#![feature(generic_const_exprs)]
+struct P&lt;T: ?Sized&gt;([u8; 1 + 4], T);
+
+fn main() {
+    let x: Box&lt;P&lt;[u8; 0]&gt;&gt; = Box::new(P(Default::default(), [0; 0]));
+    let _: Box&lt;P&lt;[u8]&gt;&gt; = x; //~ ERROR mismatched types
+}
+</code></pre></pre>
+<p>const occurs check (with <a href="https://github.com/rust-lang/rust/pull/81351">#81351</a>):</p>
+<pre><pre class="playground"><code class="language-rust">#![feature(lazy_normalization_consts)]
+
+fn bind&lt;const N: usize&gt;(value: [u8; N]) -&gt; [u8; 3 + 4] {
+    todo!()
+}
+
+fn main() {
+    let mut arr = Default::default();
+    arr = bind(arr); //~ ERROR mismatched type
+}
+</code></pre></pre>
+<h4 id="status"><a class="header" href="#status">Status</a></h4>
+<p>Discussed in the following meetings: <a href="../meetings/2021.02.09-lazy-norm.html">2021.02.09</a>, <a href="../meetings/2021.02.16-lazy-norm.html">2021.02.16</a>, <a href="../meetings/2021.03.09-unused-substs-impl.html">2021.03.09</a></p>
+<p>A potential solution has been merged with <a href="https://github.com/rust-lang/rust/pull/87280">#87280</a> and reverted in <a href="https://github.com/rust-lang/rust/pull/92805">#92805</a> as the required changes negatively impacted large parts of the compiler, even these unrelated to const generics. A potentially nicer solution would be to forbid all parameters which aren't explicitly mentioned by anonymous constants. It isn't yet clear how to best implement this.</p>
+<h3 id="consts-in-where-bounds-can-reference-themselves"><a class="header" href="#consts-in-where-bounds-can-reference-themselves">Consts in where bounds can reference themselves</a></h3>
+<p>This causes query cycles for code that should compile and already compiles on stable</p>
+<p><a href="https://github.com/rust-lang/rust/issues/79356">#79356</a></p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span>#![feature(generic_const_exprs)]
+
+<span class="boring">fn main() {
+</span>struct Foo&lt;T&gt;(T);
+
+fn test() where [u8; {
+    let _: Foo&lt;[u8; 3 + 4]&gt;;
+    3
+}]: Sized {}
+<span class="boring">}
+</span></code></pre></pre>
+<h4 id="status-1"><a class="header" href="#status-1">Status</a></h4>
+<p>Discussed in the following meetings: <a href="../meetings/2021.02.23-ct-in-where-bounds.html">2021.02.23</a></p>
+<p>Not yet solved, potentially fixed by improving the query/trait system to deal with cycles. Maybe blocked on <em>chalk</em>. </p>
+<h3 id="consts-in-where-clauses-are-executed-with-inconsistent-substs"><a class="header" href="#consts-in-where-clauses-are-executed-with-inconsistent-substs">Consts in where clauses are executed with inconsistent substs</a></h3>
+<p>We evaluate consts in where clauses without first proving the where clauses of the const itself, potentially causing ICE.</p>
+<pre><pre class="playground"><code class="language-rust">#![feature(generic_const_exprs)]
+
+trait Foo {
+    type Assoc;
+    const ASSOC: &lt;Self as Foo&gt;::Assoc;
+}
+
+impl Foo for i32 {
+    type Assoc = i64;
+    const ASSOC: i64 = 3;
+}
+
+const fn bar&lt;T&gt;(x: T) -&gt; usize {
+    std::mem::forget(x);
+    3
+}
+
+fn foo&lt;T&gt;() where
+    T: Foo&lt;Assoc = T&gt;,
+    [u8; bar::&lt;T&gt;(&lt;T as Foo&gt;::ASSOC)]: Sized,
+{}
+
+fn main() {
+    foo::&lt;i32&gt;();
+}
+</code></pre></pre>
+<h4 id="status-2"><a class="header" href="#status-2">Status</a></h4>
+<p>Discussed in the following meetings: <a href="../meetings/2021.03.23-ct-in-where-bounds.html">2021.03.23</a></p>
+<p>Probably solved by retypechecking the MIR of anonymous constants before const evaluating them.
+Therefore waiting on implementation work.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../vision/roadmap.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../design-docs/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-                            <a rel="next" href="../meetings/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../design-docs/const-eval-requirements.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         <div style="clear: both"></div>
@@ -165,10 +239,10 @@ For example, if a design doc or part of the shiny future is describing a new lan
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../vision/roadmap.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../design-docs/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                    <a rel="next" href="../meetings/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../design-docs/const-eval-requirements.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
