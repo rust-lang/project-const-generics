@@ -15,12 +15,11 @@ prevents the input for that computation to simply be a generic or function param
 
 ## Why const generics?
 
-In most cases, const evaluation by itself is good enough, so const generics isn't needed. An exception to this is
-if the value should influence the type system. 
+Const evaluation by itself is good enough unless it should influence the type system. 
 
-This is needed when influencing the layout of types, most often by using arrays.
-Using arrays instead of dynamic allocations or slices can improve the performance, reduces the dynamic memory footprint
-and can remove the runtime checks and implicit invariants.
+This is needed when computing the layout of types, most often by using arrays.
+Using arrays instead of dynamic allocations or slices can improve performance, reduces the dynamic memory footprint
+and can remove runtime checks and implicit invariants.
 
 Another reason is to be generic over configurations or to move certain conditions to compile time. Consider [image handles](https://github.com/EmbarkStudios/rust-gpu/blob/1431c18b9db70feafc64e5096a64e5fefffbed18/crates/spirv-std/src/image.rs#L31) in [`rust-gpu`](https://github.com/EmbarkStudios/rust-gpu) or TODO: example for state machines.
 
