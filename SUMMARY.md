@@ -3,6 +3,7 @@
 - [👋🏽 Welcome](./README.md)
 - [📜 Charter](./CHARTER.md)
 - [🔮 The vision](./vision.md)
+    - [🤔 Why compile time evaluation](./vision/why-compile-time-evaluation.md)
     - [🙋‍♀️ Cast of characters](./vision/characters.md)
     - [🔀 Skill Tree](./skill-tree.md)
     - [😱 Status quo](./vision/status_quo.md)
