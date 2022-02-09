@@ -6,9 +6,12 @@ This section is, in many ways, the most important. It aims to clarify the reason
 
 People already precompute certain data structures, lookup tables, and so on, at compile time.
 For example the crate `regex` could be able to compile a regex at compile time,
-improving the performance when using `regex` and even removing the need for runtime allocations. 
+improving the performance when using `regex` and even removing the need for runtime allocations.
+Const evaluation is also very useful to assert correctness requirements at compile time, instead
+of using a runtime panic.
 
-Without good const evaluation support, is often easier to just use a `build.rs` file for this or compute it externally and generate the result outside of the ordinary compilation process. If that isn't possible or sensible, one often just requires the computation to happen at runtime, negatively impacting startup performance.
+Without good const evaluation support, is often easier to just use a `build.rs` file for this or compute it externally and generate the result outside of the ordinary compilation process. This is both worse for the user, as they essentially have to learn yet another
+meta language, and also negatively impacts the compilation speed and incremental compilation. If that isn't possible or sensible, one often just requires the computation to happen at runtime, negatively impacting startup performance.
 
 Computing things outside without using const eval makes it at lot more cumbersome to use and
 prevents the input for that computation to simply be a generic or function parameter.
@@ -38,7 +41,7 @@ Reading or writing code which can be used at compile time should ideally not be 
 than writing other code. Requiring a lot of weird trait bounds or other hacks should be avoided as much as possible.
 Supporting compile time evaluation should not worsen the experience of users, especially for beginners.
 
-## Reliable: "if it passes `cargo check`, it works"
+### Reliable: "if it passes `cargo check`, it works"
 
 Const evaluation failures should be detected as early as possible, even when using `cargo check`. When writing library code, incorrect constants
 should cause warnings and errors whenever possible.
