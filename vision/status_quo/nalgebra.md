@@ -62,6 +62,8 @@ where
 }
 ```
 
+As these bounds infect the public API, they are also a large backwards compatability concern.
+
 ### `ToTypenum` is only implemented up to fixed size
 
 That's annoying. ✨
@@ -81,6 +83,12 @@ fn foo<Dims: MyDimensions>() {
 }
 ```
 While this can be avoided by going to back to `typenum` and using associated types, this adds a lot of unnecessary bounds and inpacts all of the code dealing with it.
+
+### Generic parameters aren't exhaustive
+
+Because `R` and `C` are generic parameters and not constants, the compiler doesn't know that
+`DefaultAllocator: Allocator<T, R, C>` holds for all `R` and `C`, leaking implementation defaults
+and causing signatures to be far less readable than necessary.
 
 ## Wishlist
 
