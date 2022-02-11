@@ -62,6 +62,10 @@ where
 }
 ```
 
+### `ToTypenum` is only implemented up to fixed size
+
+That's annoying. ✨
+
 ### Cannot use associated constants
 
 It is currently also not possible to have the size of a matrix depend on associated constants:
@@ -138,3 +142,8 @@ For this generic const expressions have to be supported.
 
 For `R1 * R2` to work we need const trait impls, otherwise this
 can be written using `mul_dim(R1, R2)` or something.
+
+## `Default` for arrays
+
+`nalgebra` currently has to work around `Default` not being implemented
+for all arrays where `T: Default`.
