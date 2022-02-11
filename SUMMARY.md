@@ -9,6 +9,7 @@
     - [😱 Status quo](./vision/status_quo.md)
         - [Array defaults](./vision/status_quo/array_default.md)
         - [Array split first method](./vision/status_quo/split_first.md)
+        - [nalgebra](./vision/status_quo/nalgebra.md)
     - [✨ Shiny future](./vision/shiny_future.md)
         - [Array defaults](./vision/shiny_future/array_default.md)
         - [Array split first method](./vision/shiny_future/split_first.md)
