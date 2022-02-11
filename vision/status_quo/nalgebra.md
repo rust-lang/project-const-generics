@@ -20,7 +20,7 @@ pub type SMatrix<T, const R: usize, const C: usize> =
     Matrix<T, Const<R>, Const<C>, ArrayStorage<T, R, C>>;
 ```
 
-To deal with the lack of generic const expressions, they a trait for conversions from and to [`typenum`](https://crates.io/crates/typenum) for all `Const` up to size `127` ([source](https://github.com/dimforge/nalgebra/blob/39bb572557299a44093ea09daaff144fd6d9ea1f/src/base/dimension.rs#L273-L345)).
+To deal with the lack of generic const expressions, they add a trait for conversions from and to [`typenum`](https://crates.io/crates/typenum) for all `Const` up to size `127` ([source](https://github.com/dimforge/nalgebra/blob/39bb572557299a44093ea09daaff144fd6d9ea1f/src/base/dimension.rs#L273-L345)).
 
 Whenever they now need some computation using `Const<N>`, they convert it to type nums, evaluate the computation using the trait system, and then convert the result back to some `Const<M>`.
 
