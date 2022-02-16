@@ -126,6 +126,8 @@ For this impl to bind `R` and `C`, the expression `Dim::Const(N)` has to bind `N
 This is sound as constructors are injective. It seems very desirable to at least
 enable this for expressions using constructors.
 
+See [this playground link](https://play.rust-lang.org/?version=nightly&mode=debug&edition=2021&gist=4b0b726922ee3dcba4fd6066c048af2f) for a complete example.
+
 ### Merge partial impls to be exhaustive
 
 By adding one trait impl impl for `Dim::Dynamic` and one for `Dim::Const(N)`, it should be enough to consider that trait to be implemented for all `Dim`.
