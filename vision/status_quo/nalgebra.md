@@ -126,7 +126,18 @@ For this impl to bind `R` and `C`, the expression `Dim::Const(N)` has to bind `N
 This is sound as constructors are injective. It seems very desirable to at least
 enable this for expressions using constructors.
 
-See [this playground link](https://play.rust-lang.org/?version=nightly&mode=debug&edition=2021&gist=4b0b726922ee3dcba4fd6066c048af2f) for a complete example.
+Without this, one gets an error message like the following:
+```
+error[E0207]: the const parameter `R` is not constrained by the impl trait, self type, or predicates
+ --> src/lib.rs:5:12
+  |
+5 | impl<T, const R: usize, const C: usize> for SMatrix<T, R, C> {
+  |               ^ unconstrained const parameter
+  |
+  = note: expressions using a const parameter must map each value to a distinct output value
+  = note: only used in the expression `Dim::Const(R)`
+  = note: proving the result of expressions other than the parameter are unique is not supported
+```
 
 ### Merge partial impls to be exhaustive
 
