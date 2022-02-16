@@ -1,0 +1,336 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>nalgebra - Const Generics Project Group</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../../skill-tree.css">
+        <link rel="stylesheet" href="../../skill-tree-finetuning.css">
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../index.html">👋🏽 Welcome</a></li><li class="chapter-item expanded "><a href="../../CHARTER.html">📜 Charter</a></li><li class="chapter-item expanded "><a href="../../vision.html">🔮 The vision</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../vision/why-compile-time-evaluation.html">🤔 Why compile time evaluation</a></li><li class="chapter-item expanded "><a href="../../vision/characters.html">🙋‍♀️ Cast of characters</a></li><li class="chapter-item expanded "><a href="../../skill-tree.html">🔀 Skill Tree</a></li><li class="chapter-item expanded "><a href="../../vision/status_quo.html">😱 Status quo</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../vision/status_quo/array_default.html">Array defaults</a></li><li class="chapter-item expanded "><a href="../../vision/status_quo/split_first.html">Array split first method</a></li><li class="chapter-item expanded "><a href="../../vision/status_quo/nalgebra.html" class="active">nalgebra</a></li></ol></li><li class="chapter-item expanded "><a href="../../vision/shiny_future.html">✨ Shiny future</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../vision/shiny_future/array_default.html">Array defaults</a></li><li class="chapter-item expanded "><a href="../../vision/shiny_future/split_first.html">Array split first method</a></li><li class="chapter-item expanded "><a href="../../vision/shiny_future/image_type.html">Image type in rust-gpu</a></li></ol></li><li class="chapter-item expanded "><a href="../../vision/roadmap.html">📅 Roadmap for 2021</a></li><li class="chapter-item expanded "><a href="../../vision/how_to_vision_doc.html">❓How to vision doc</a></li></ol></li><li class="chapter-item expanded "><a href="../../meetings/index.html">🔍 Meetings</a></li><li class="chapter-item expanded "><a href="../../design-docs/index.html">📚 Design Documents</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../design-docs/anon-const-substs.html">Anon const substs</a></li><li class="chapter-item expanded "><a href="../../design-docs/const-eval-requirements.html">Const eval requirements</a></li><li class="chapter-item expanded "><a href="../../design-docs/generic-const-param-types.html">Generic const param types</a></li></ol></li><li class="chapter-item expanded "><a href="../../draft-rfcs/index.html">✏️ Draft RFCs</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Const Generics Project Group</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/rust-lang/project-const-generics" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="-status-quo-nalgebra"><a class="header" href="#-status-quo-nalgebra">😱 Status quo: nalgebra</a></h1>
+<p><em>a huge thanks to <a href="https://github.com/Andlon">Andreas Borgen Longva</a> and <a href="https://github.com/sebcrozet">Sébastien Crozet</a> for the help with figuring this out</em></p>
+<p><a href="https://nalgebra.org/">nalgebra</a> is a linear algebra library. At the core of that library is a type <code>struct Matrix&lt;T, R, C, S&gt;</code> where <code>T</code> is the components scalar type, <code>R</code> and <code>C</code> represents the number of rows and columns and <code>S</code> represents the type of the buffer containing the data.</p>
+<p>Relevant for const generics are the parameters <code>R</code> and <code>C</code>. These are instantiated using one of the following types:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// For matrices of know size.
+pub struct Const&lt;const R: usize&gt;;
+// For matrices with a size only known at runtime.
+pub struct Dynamic { value: usize }
+<span class="boring">}
+</span></code></pre></pre>
+<p>The authors of nalgebra then introduce a type alias</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub struct ArrayStorage&lt;T, const R: usize, const C: usize&gt;(pub [[T; R]; C]);
+/// A matrix of statically know size.
+pub type SMatrix&lt;T, const R: usize, const C: usize&gt; =
+    Matrix&lt;T, Const&lt;R&gt;, Const&lt;C&gt;, ArrayStorage&lt;T, R, C&gt;&gt;;
+<span class="boring">}
+</span></code></pre></pre>
+<p>To deal with the lack of generic const expressions, they add a trait for conversions from and to <a href="https://crates.io/crates/typenum"><code>typenum</code></a> for all <code>Const</code> up to size <code>127</code> (<a href="https://github.com/dimforge/nalgebra/blob/39bb572557299a44093ea09daaff144fd6d9ea1f/src/base/dimension.rs#L273-L345">source</a>).</p>
+<p>Whenever they now need some computation using <code>Const&lt;N&gt;</code>, they convert it to type nums, evaluate the computation using the trait system, and then convert the result back to some <code>Const&lt;M&gt;</code>.</p>
+<h2 id="disadvantages"><a class="header" href="#disadvantages">Disadvantages</a></h2>
+<p>While this mostly works fine, there are some disadvantages.</p>
+<h3 id="annoying-totypenum-bounds"><a class="header" href="#annoying-totypenum-bounds">Annoying <code>ToTypenum</code> bounds</a></h3>
+<p>Most notably this adds a lot of unnecessary bounds, consider the following impl:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>impl&lt;T, const R1: usize, const C1: usize, const R2: usize, const C2: usize&gt;
+    ReshapableStorage&lt;T, Const&lt;R1&gt;, Const&lt;C1&gt;, Const&lt;R2&gt;, Const&lt;C2&gt;&gt; for ArrayStorage&lt;T, R1, C1&gt;
+where
+    T: Scalar,
+    Const&lt;R1&gt;: ToTypenum,
+    Const&lt;C1&gt;: ToTypenum,
+    Const&lt;R2&gt;: ToTypenum,
+    Const&lt;C2&gt;: ToTypenum,
+    &lt;Const&lt;R1&gt; as ToTypenum&gt;::Typenum: Mul&lt;&lt;Const&lt;C1&gt; as ToTypenum&gt;::Typenum&gt;,
+    &lt;Const&lt;R2&gt; as ToTypenum&gt;::Typenum: Mul&lt;
+        &lt;Const&lt;C2&gt; as ToTypenum&gt;::Typenum,
+        Output = typenum::Prod&lt;
+            &lt;Const&lt;R1&gt; as ToTypenum&gt;::Typenum,
+            &lt;Const&lt;C1&gt; as ToTypenum&gt;::Typenum,
+        &gt;,
+    &gt;,
+{
+    type Output = ArrayStorage&lt;T, R2, C2&gt;;
+
+    fn reshape_generic(self, _: Const&lt;R2&gt;, _: Const&lt;C2&gt;) -&gt; Self::Output {
+        unsafe {
+            let data: [[T; R2]; C2] = mem::transmute_copy(&amp;self.0);
+            mem::forget(self.0);
+            ArrayStorage(data)
+        }
+    }
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>As these bounds infect the public API, they are also a large backwards compatability concern.</p>
+<h3 id="totypenum-is-only-implemented-up-to-fixed-size"><a class="header" href="#totypenum-is-only-implemented-up-to-fixed-size"><code>ToTypenum</code> is only implemented up to fixed size</a></h3>
+<p>That's annoying. ✨</p>
+<h3 id="cannot-use-associated-constants"><a class="header" href="#cannot-use-associated-constants">Cannot use associated constants</a></h3>
+<p>It is currently also not possible to have the size of a matrix depend on associated constants:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>trait MyDimensions {
+   const ROWS: usize;
+   const COLS: usize;
+}
+
+fn foo&lt;Dims: MyDimensions&gt;() {
+    // Not possible!
+    let matrix: SMatrix&lt;f64, Dims::ROWS, Dims::COLS&gt; = SMatrix::zeros();
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>While this can be avoided by going to back to <code>typenum</code> and using associated types, this adds a lot of unnecessary bounds and inpacts all of the code dealing with it.</p>
+<h3 id="generic-parameters-arent-exhaustive"><a class="header" href="#generic-parameters-arent-exhaustive">Generic parameters aren't exhaustive</a></h3>
+<p>Because <code>R</code> and <code>C</code> are generic parameters and not constants, the compiler doesn't know that
+<code>DefaultAllocator: Allocator&lt;T, R, C&gt;</code> holds for all <code>R</code> and <code>C</code>, leaking implementation defaults
+and causing signatures to be far less readable than necessary.</p>
+<h2 id="wishlist"><a class="header" href="#wishlist">Wishlist</a></h2>
+<p>Ideally, <code>Matrix</code> could be changed to the following:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>enum Dim {
+    Const(usize),
+    Dynamic,
+}
+
+struct Matrix&lt;T, const R: Dim, const C: Dim, S&gt; { ... }
+
+type SMatrix&lt;T, const R: usize, const C: usize&gt; =
+    Matrix&lt;T, Dim::Const(R), Dim::Const(C), ArrayStorage&lt;T, R, C&gt;&gt;;
+<span class="boring">}
+</span></code></pre></pre>
+<p>For this to work well there have a bunch of requirements for const generics:</p>
+<h3 id="user-defined-types-as-const-parameter-types"><a class="header" href="#user-defined-types-as-const-parameter-types">User-defined types as const parameter types</a></h3>
+<p>We have to be able to use <code>Dim</code> as a const param type</p>
+<h3 id="consider-injective-expressions-to-bind-generic-params"><a class="header" href="#consider-injective-expressions-to-bind-generic-params">Consider injective expressions to bind generic params</a></h3>
+<p>With this change, <code>nalgebra</code> needs impls like the following</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>impl&lt;T, const R: usize, const C: usize&gt; for SMatrix&lt;T, R, C&gt; {
+    // ...
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>For this impl to bind <code>R</code> and <code>C</code>, the expression <code>Dim::Const(N)</code> has to bind <code>N</code>.
+This is sound as constructors are injective. It seems very desirable to at least
+enable this for expressions using constructors.</p>
+<p>Without this, one gets an error message like the following:</p>
+<pre><code>error[E0207]: the const parameter `R` is not constrained by the impl trait, self type, or predicates
+ --&gt; src/lib.rs:5:12
+  |
+5 | impl&lt;T, const R: usize, const C: usize&gt; for SMatrix&lt;T, R, C&gt; {
+  |               ^ unconstrained const parameter
+  |
+  = note: expressions using a const parameter must map each value to a distinct output value
+  = note: only used in the expression `Dim::Const(R)`
+  = note: proving the result of expressions other than the parameter are unique is not supported
+</code></pre>
+<h3 id="merge-partial-impls-to-be-exhaustive"><a class="header" href="#merge-partial-impls-to-be-exhaustive">Merge partial impls to be exhaustive</a></h3>
+<p>By adding one trait impl impl for <code>Dim::Dynamic</code> and one for <code>Dim::Const(N)</code>, it should be enough to consider that trait to be implemented for all <code>Dim</code>.</p>
+<p>Ideally, the compiler should figure this out by itself, or it can be emulated using specialization by manually adding an impl for all <code>Dim</code> which always gets overridden.</p>
+<h3 id="generic-const-expressions"><a class="header" href="#generic-const-expressions">Generic const expressions</a></h3>
+<p>For example when computing the <a href="https://en.wikipedia.org/wiki/Kronecker_product">Kronecker product</a> which has the following simplified signature:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub fn kronecker&lt;T, const R1: Dim, const C1: Dim, const R2: Dim, const C2: Dim&gt;(
+    lhs: &amp;Matrix&lt;T, R1, C2&gt;,
+    rhs: &amp;Matrix&lt;T, R2, C2&gt;,
+) -&gt; Matrix&lt;T, R1 * R2, C1 * C2&gt; {
+    ...
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>For this generic const expressions have to be supported.</p>
+<h3 id="const-trait-implementations"><a class="header" href="#const-trait-implementations">const Trait implementations</a></h3>
+<p>For <code>R1 * R2</code> to work we need const trait impls, otherwise this
+can be written using <code>mul_dim(R1, R2)</code> or something.</p>
+<h2 id="default-for-arrays"><a class="header" href="#default-for-arrays"><code>Default</code> for arrays</a></h2>
+<p><code>nalgebra</code> currently has to work around <code>Default</code> not being implemented
+for all arrays where <code>T: Default</code>.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../vision/status_quo/split_first.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../../vision/shiny_future.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../vision/status_quo/split_first.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../../vision/shiny_future.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        <script type="text/javascript" src="../../viz.js"></script>
+        <script type="text/javascript" src="../../panzoom.min.js"></script>
+        <script type="text/javascript" src="../../full.render.js"></script>
+        <script type="text/javascript" src="../../skill-tree.js"></script>
+    </body>
+</html>
