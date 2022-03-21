@@ -3,10 +3,13 @@
 For an explanation of how const generics currently works in the compiler,
 also check out the [rustc-dev-guide](https://rustc-dev-guide.rust-lang.org/constants.html).
 
-
 Const generics has quite a few deep rooted issues and design challenges.
 In this document we try to highlight some specific topics which are fairly
 pervasive while working on this feature.
+The goalis to more clearly understand the
+current state of const generics and to help us figure out ways to
+make progress. Without this the challenges we currently face seem
+near insurmountable.
 
 ### 🔙 Backwards compatability
 
