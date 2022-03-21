@@ -880,13 +880,13 @@ which prevents the addition of that in the future.</p>
 </span></code></pre></pre>
 <p>This feature interacts with the following topics:</p>
 <ul>
-<li><a href="design/./design/constraining-generic-parameters.html">❗ Constraining generic parameters</a></li>
-<li><a href="design/./design/structural-equality.html">❗🔙 ⚖️ Structural equality</a></li>
-<li><a href="design/./design/valid-const-parameter-types.html">❗⚖️ Valid const parameter types</a></li>
-<li><a href="design/./design/valtrees.html">❗ Valtrees</a></li>
-<li><a href="design/./design/generic-const-param-types.html">❗⚖️🔄 Generic const parameter types</a></li>
+<li><a href="design/./constraining-generic-parameters.html">❗ Constraining generic parameters</a></li>
+<li><a href="design/./structural-equality.html">❗🔙 ⚖️ Structural equality</a></li>
+<li><a href="design/./valid-const-parameter-types.html">❗⚖️ Valid const parameter types</a></li>
+<li><a href="design/./valtrees.html">❗ Valtrees</a></li>
+<li><a href="design/./generic-const-param-types.html">❗⚖️🔄 Generic const parameter types</a></li>
 <li><a href="design/./design/exhaustiveness.html">❔ Exhaustiveness</a></li>
-<li><a href="design/./design/functions-as-const-parameters.html">❔🔙 Functions as const parameters</a></li>
+<li><a href="design/./functions-as-const-parameters.html">❔🔙 Functions as const parameters</a></li>
 </ul>
 <h2 id="generic-constants-in-the-type-system-generic_const_exprs"><a class="header" href="#generic-constants-in-the-type-system-generic_const_exprs">Generic constants in the type system (<a href="https://github.com/rust-lang/rust/issues/76560"><code>generic_const_exprs</code></a>)</a></h2>
 <ul>
@@ -896,10 +896,10 @@ which prevents the addition of that in the future.</p>
 </ul>
 <h3 id="unifying-generic-constants"><a class="header" href="#unifying-generic-constants">Unifying generic constants</a></h3>
 <ul>
-<li><a href="design/./design/const-eval-requirements.html">❗🔙 Restrictions on const evaluation</a></li>
+<li><a href="design/./const-eval-requirements.html">❗🔙 Restrictions on const evaluation</a></li>
 <li>❗ Do not leak implementation details</li>
 <li>❗ Splitting constants during unification</li>
-<li><a href="design/./design/constraining-generic-parameters.html">❗ Constraining generic parameters</a></li>
+<li><a href="design/./constraining-generic-parameters.html">❗ Constraining generic parameters</a></li>
 <li>❔⚖️ Extending unification logic</li>
 </ul>
 <h3 id="-const-evaluatable-bounds"><a class="header" href="#-const-evaluatable-bounds">❔ Const evaluatable bounds</a></h3>
@@ -987,7 +987,7 @@ but this is not a concern for const generics.</p>
 <p>Other sources of non-determinism are allocations. This non-determinism
 must however not be observed during const-evaluation (TODO: link to const-eval).</p>
 <p>Any references used in a constant are considered equal if their targets are equal, which is also determistic.
-This is needed by <a href="design/./design/valtrees.html">valtrees</a>. The specific design of valtrees also adds some other
+This is needed by <a href="design/./valtrees.html">valtrees</a>. The specific design of valtrees also adds some other
 additional constraints to const evaluation which are listed on its page.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="--structural-equality"><a class="header" href="#--structural-equality">❗🔙 ⚖️ Structural equality</a></h1>
 <p>We have to figure out which values and types can be sensibly compared at compile time.</p>
@@ -997,7 +997,7 @@ additional constraints to const evaluation which are listed on its page.</p>
 <p><strong><a href="https://github.com/rust-lang/project-const-generics/issues/6">project-const-generics#6</a></strong></p>
 <p>We have to decide which types may be used as a const parameter and whether there needs to be explicit opt-in.</p>
 <h2 id="status-2"><a class="header" href="#status-2">Status</a></h2>
-<p><strong>Blocked</strong>: Waiting on <a href="design/./design/structural-equality.html">structural equality</a>.</p>
+<p><strong>Blocked</strong>: Waiting on <a href="design/./structural-equality.html">structural equality</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="-valtrees"><a class="header" href="#-valtrees">❗ Valtrees</a></h1>
 <p>A new representation for <code>ty::Const</code>.</p>
 <h2 id="-figure-out-how-they-interact-with-references-wrt-padding"><a class="header" href="#-figure-out-how-they-interact-with-references-wrt-padding">❗ Figure out how they interact with references wrt padding</a></h2>
@@ -1017,7 +1017,7 @@ impl ForBool&lt;false&gt; for u8 {}
 <span class="boring">}
 </span></code></pre></pre>
 <h2 id="status-4"><a class="header" href="#status-4">Status</a></h2>
-<p><strong>Idle</strong>: While not blocked, it may make sense to wait until we are able to <a href="design/./design/constraining-generic-parameters.html">constrain generic parameters</a>.</p>
+<p><strong>Idle</strong>: While not blocked, it may make sense to wait until we are able to <a href="design/./constraining-generic-parameters.html">constrain generic parameters</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="-functions-as-const-parameters"><a class="header" href="#-functions-as-const-parameters">❔🔙 Functions as const parameters</a></h1>
 <p><strong><a href="https://github.com/rust-lang/project-const-generics/issues/7">project-const-generics#7</a></strong></p>
 <p>It would be nice to allow function pointers as const parameter types.</p>
