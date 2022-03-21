@@ -77,7 +77,9 @@ This feature interacts with the following topics:
 - [❗ Constraining generic parameters](./design/constraining-generic-parameters.html)
 - ❔⚖️ Extending unification logic
 
-### Const evaluatable bounds
+### ❔ Const evaluatable bounds
+
+- ❗ Using subtrees to fulfill bounds
 
 ALL OF THIS
 
