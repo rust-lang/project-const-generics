@@ -12,4 +12,4 @@ impl ForBool<false> for u8 {}
 
 ## Status
 
-**Idle**: While not blocked, it may make sense to wait until we are able to [constrain generic parameters](./design/constraining-generic-parameters.html).
+**Idle**: While not blocked, it may make sense to wait until we are able to [constrain generic parameters](./constraining-generic-parameters.html).

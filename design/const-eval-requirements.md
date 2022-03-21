@@ -18,5 +18,5 @@ Other sources of non-determinism are allocations. This non-determinism
 must however not be observed during const-evaluation (TODO: link to const-eval).
 
 Any references used in a constant are considered equal if their targets are equal, which is also determistic.
-This is needed by [valtrees](./design/valtrees.html). The specific design of valtrees also adds some other
+This is needed by [valtrees](./valtrees.html). The specific design of valtrees also adds some other
 additional constraints to const evaluation which are listed on its page.

@@ -6,4 +6,4 @@ We have to decide which types may be used as a const parameter and whether there
 
 ## Status
 
-**Blocked**: Waiting on [structural equality](./design/structural-equality.html).
+**Blocked**: Waiting on [structural equality](./structural-equality.html).
