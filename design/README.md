@@ -59,13 +59,13 @@ struct WithGenericArray<T, const N: usize, const ARRAY: [T; N]> { ... }
 
 This feature interacts with the following topics:
 
-- [❗ Constraining generic parameters](./design/constraining-generic-parameters.html)
-- [❗🔙 ⚖️ Structural equality](./design/structural-equality.html)
-- [❗⚖️ Valid const parameter types](./design/valid-const-parameter-types.html)
-- [❗ Valtrees](./design/valtrees.html)
-- [❗⚖️🔄 Generic const parameter types](./design/generic-const-param-types.html)
+- [❗ Constraining generic parameters](./constraining-generic-parameters.html)
+- [❗🔙 ⚖️ Structural equality](./structural-equality.html)
+- [❗⚖️ Valid const parameter types](./valid-const-parameter-types.html)
+- [❗ Valtrees](./valtrees.html)
+- [❗⚖️🔄 Generic const parameter types](./generic-const-param-types.html)
 - [❔ Exhaustiveness](./design/exhaustiveness.html)
-- [❔🔙 Functions as const parameters](./design/functions-as-const-parameters.html)
+- [❔🔙 Functions as const parameters](./functions-as-const-parameters.html)
 
 ## Generic constants in the type system ([`generic_const_exprs`](https://github.com/rust-lang/rust/issues/76560))
 
@@ -74,10 +74,10 @@ This feature interacts with the following topics:
 - ❗🔄 Evaluation without first checking where-clauses
 ### Unifying generic constants
 
-- [❗🔙 Restrictions on const evaluation](./design/const-eval-requirements.html)
+- [❗🔙 Restrictions on const evaluation](./const-eval-requirements.html)
 - ❗ Do not leak implementation details
 - ❗ Splitting constants during unification
-- [❗ Constraining generic parameters](./design/constraining-generic-parameters.html)
+- [❗ Constraining generic parameters](./constraining-generic-parameters.html)
 - ❔⚖️ Extending unification logic
 
 ### ❔ Const evaluatable bounds
