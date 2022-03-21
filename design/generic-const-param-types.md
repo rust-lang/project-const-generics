@@ -1,4 +1,4 @@
-# Generic const param types
+# ❗⚖️🔄 Generic const parameter types
 
 We want to support the types of const parameters
 to depend on other generic parameters.
@@ -34,3 +34,7 @@ break stuff.
 Potential dangers include partially resolved types and projections.
 
 [WithOptConstParam]: https://doc.rust-lang.org/nightly/nightly-rustc/rustc_middle/ty/struct.WithOptConstParam.html
+
+## Status
+
+**Blocked**: We should first stabilize `feature(adt_const_params)`.
