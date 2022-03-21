@@ -78,7 +78,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html">👋🏽 Welcome</a></li><li class="chapter-item expanded "><a href="CHARTER.html">📜 Charter</a></li><li class="chapter-item expanded "><a href="vision.html">🔮 The vision</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="vision/why-compile-time-evaluation.html">🤔 Why compile time evaluation</a></li><li class="chapter-item expanded "><a href="vision/characters.html">🙋‍♀️ Cast of characters</a></li><li class="chapter-item expanded "><a href="skill-tree.html">🔀 Skill Tree</a></li><li class="chapter-item expanded "><a href="vision/status_quo.html">😱 Status quo</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="vision/status_quo/array_default.html">Array defaults</a></li><li class="chapter-item expanded "><a href="vision/status_quo/split_first.html">Array split first method</a></li><li class="chapter-item expanded "><a href="vision/status_quo/nalgebra.html">nalgebra</a></li></ol></li><li class="chapter-item expanded "><a href="vision/shiny_future.html">✨ Shiny future</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="vision/shiny_future/array_default.html">Array defaults</a></li><li class="chapter-item expanded "><a href="vision/shiny_future/split_first.html">Array split first method</a></li><li class="chapter-item expanded "><a href="vision/shiny_future/image_type.html">Image type in rust-gpu</a></li></ol></li><li class="chapter-item expanded "><a href="vision/roadmap.html">📅 Roadmap for 2021</a></li><li class="chapter-item expanded "><a href="vision/how_to_vision_doc.html">❓How to vision doc</a></li></ol></li><li class="chapter-item expanded "><a href="meetings/index.html">🔍 Meetings</a></li><li class="chapter-item expanded "><a href="design-docs/index.html">📚 Design Documents</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="design-docs/anon-const-substs.html">Anon const substs</a></li><li class="chapter-item expanded "><a href="design-docs/const-eval-requirements.html">Const eval requirements</a></li><li class="chapter-item expanded "><a href="design-docs/generic-const-param-types.html">Generic const param types</a></li></ol></li><li class="chapter-item expanded "><a href="draft-rfcs/index.html">✏️ Draft RFCs</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="index.html">👋🏽 Welcome</a></li><li class="chapter-item expanded "><a href="CHARTER.html">📜 Charter</a></li><li class="chapter-item expanded "><a href="vision.html">🔮 The vision</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="vision/why-compile-time-evaluation.html">🤔 Why compile time evaluation</a></li><li class="chapter-item expanded "><a href="vision/characters.html">🙋‍♀️ Cast of characters</a></li><li class="chapter-item expanded "><a href="skill-tree.html">🔀 Skill Tree</a></li><li class="chapter-item expanded "><a href="vision/status_quo.html">😱 Status quo</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="vision/status_quo/array_default.html">Array defaults</a></li><li class="chapter-item expanded "><a href="vision/status_quo/split_first.html">Array split first method</a></li><li class="chapter-item expanded "><a href="vision/status_quo/nalgebra.html">nalgebra</a></li></ol></li><li class="chapter-item expanded "><a href="vision/shiny_future.html">✨ Shiny future</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="vision/shiny_future/array_default.html">Array defaults</a></li><li class="chapter-item expanded "><a href="vision/shiny_future/split_first.html">Array split first method</a></li><li class="chapter-item expanded "><a href="vision/shiny_future/image_type.html">Image type in rust-gpu</a></li></ol></li><li class="chapter-item expanded "><a href="vision/roadmap.html">📅 Roadmap for 2021</a></li><li class="chapter-item expanded "><a href="vision/how_to_vision_doc.html">❓How to vision doc</a></li></ol></li><li class="chapter-item expanded "><a href="meetings/index.html">🔍 Meetings</a></li><li class="chapter-item expanded "><a href="design/index.html">📚 Design</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="design/constraining-generic-parameters.html">❗ Constraining generic parameters</a></li><li class="chapter-item expanded "><a href="design/generic-const-param-types.html">❗⚖️🔄 Generic const parameter types</a></li><li class="chapter-item expanded "><a href="design/const-eval-requirements.html">❗🔙 Restrictions on const evaluation</a></li><li class="chapter-item expanded "><a href="design/structural-equality.html">❗🔙 ⚖️ Structural equality</a></li><li class="chapter-item expanded "><a href="design/valid-const-parameter-types.html">❗⚖️ Valid const parameter types</a></li><li class="chapter-item expanded "><a href="design/valtrees.html">❗ Valtrees</a></li><li class="chapter-item expanded "><a href="design/exhaustiveness.html">❔ Exhaustiveness</a></li><li class="chapter-item expanded "><a href="design/functions-as-const-parameters.html">❔🔙 Functions as const parameters</a></li></ol></li><li class="chapter-item expanded "><a href="draft-rfcs/index.html">✏️ Draft RFCs</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -828,103 +828,109 @@ For example, if a design doc or part of the shiny future is describing a new lan
 <p>This folder contains the minutes of all the recorded meetings that have happened
 so far.</p>
 <p>Check them out <a href="https://github.com/rust-lang/project-const-generics/tree/master/meetings">on github</a>.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="design-documents"><a class="header" href="#design-documents">Design documents</a></h1>
-<p>This folder contains implementation and design considerations about const generics.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="anon-consts-substs"><a class="header" href="#anon-consts-substs">Anon consts substs</a></h1>
-<p>Currently locked behind <code>feature(generic_const_exprs)</code>, we do not supply anonymous constants
-with their parents generics.</p>
-<p>Doing so is needed if we want to ever support more complex generic expressions in anonymous constants.</p>
-<h2 id="known-blockers"><a class="header" href="#known-blockers">Known blockers</a></h2>
-<p>Unless said otherwise, &quot;currently&quot; means &quot;with <code>feature(generic_const_exprs)</code> enabled&quot; for the rest of this document.</p>
-<h3 id="unused-substs"><a class="header" href="#unused-substs">Unused substs</a></h3>
-<p>Anon consts currently inherit all of their parents generic parameters. This breaks code already compiling on stable and causes unexpected compilation failures:</p>
-<p><a href="https://github.com/rust-lang/rust/issues/78369">#78369</a></p>
-<pre><pre class="playground"><code class="language-rust">#![feature(generic_const_exprs)]
-struct P&lt;T: ?Sized&gt;([u8; 1 + 4], T);
-
-fn main() {
-    let x: Box&lt;P&lt;[u8; 0]&gt;&gt; = Box::new(P(Default::default(), [0; 0]));
-    let _: Box&lt;P&lt;[u8]&gt;&gt; = x; //~ ERROR mismatched types
-}
-</code></pre></pre>
-<p>const occurs check (with <a href="https://github.com/rust-lang/rust/pull/81351">#81351</a>):</p>
-<pre><pre class="playground"><code class="language-rust">#![feature(lazy_normalization_consts)]
-
-fn bind&lt;const N: usize&gt;(value: [u8; N]) -&gt; [u8; 3 + 4] {
-    todo!()
-}
-
-fn main() {
-    let mut arr = Default::default();
-    arr = bind(arr); //~ ERROR mismatched type
-}
-</code></pre></pre>
-<h4 id="status"><a class="header" href="#status">Status</a></h4>
-<p>Discussed in the following meetings: <a href="design-docs/../meetings/2021.02.09-lazy-norm.html">2021.02.09</a>, <a href="design-docs/../meetings/2021.02.16-lazy-norm.html">2021.02.16</a>, <a href="design-docs/../meetings/2021.03.09-unused-substs-impl.html">2021.03.09</a></p>
-<p>A potential solution has been merged with <a href="https://github.com/rust-lang/rust/pull/87280">#87280</a> and reverted in <a href="https://github.com/rust-lang/rust/pull/92805">#92805</a> as the required changes negatively impacted large parts of the compiler, even these unrelated to const generics. A potentially nicer solution would be to forbid all parameters which aren't explicitly mentioned by anonymous constants. It isn't yet clear how to best implement this.</p>
-<h3 id="consts-in-where-bounds-can-reference-themselves"><a class="header" href="#consts-in-where-bounds-can-reference-themselves">Consts in where bounds can reference themselves</a></h3>
-<p>This causes query cycles for code that should compile and already compiles on stable</p>
-<p><a href="https://github.com/rust-lang/rust/issues/79356">#79356</a></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="-design"><a class="header" href="#-design">📚 Design</a></h1>
+<p>For an explanation of how const generics currently works in the compiler,
+also check out the <a href="https://rustc-dev-guide.rust-lang.org/constants.html">rustc-dev-guide</a>.</p>
+<p>Const generics has quite a few deep rooted issues and design challenges.
+In this document we try to highlight some specific topics which are fairly
+pervasive while working on this feature.</p>
+<h3 id="-backwards-compatability"><a class="header" href="#-backwards-compatability">🔙 Backwards compatability</a></h3>
+<p>Rust was not design with const generics in mind, and we've also made
+some unfortunate decisions even after work on const generics started.</p>
+<p>Future extensions of const generics must not cause substantial breakage
+to existing code, or if they do, this breakage has to be contained somehow.
+A possible solution to many such changes are editions.</p>
+<h3 id="-no-perfect-solution"><a class="header" href="#-no-perfect-solution">⚖️ No perfect solution</a></h3>
+<p>There isn't just one <em>perfect</em> version of const generics we are working towards.
+Instead there are a lot of major and minor tradeoffs between learnability, expressiveness,
+implementation complexity and many other factors. As we can't perfectly tell how
+const generics will be used in the future, making these decisions can be especially
+hard. For any such issues we should try to reach out to the wider community before
+coming to a final conclusion.</p>
+<h3 id="-the-query-system"><a class="header" href="#-the-query-system">🔄 The query system</a></h3>
+<p>Const generics mixes evaluation with typechecking which very quickly reaches the edge
+of what is possible with the query system. It might make sense to look at these issues in
+unison and consider whether there are some more fundamental changes to the compiler which
+provide a better solution to them instead of <a href="https://doc.rust-lang.org/nightly/nightly-rustc/rustc_middle/ty/struct.WithOptConstParam.html">adding more hacks</a>.</p>
+<h3 id="-optional-extensions"><a class="header" href="#-optional-extensions">❔ Optional extensions</a></h3>
+<p>There are a lot of things which are nice to have but not strictly necessary or maybe not even
+desirable. This means that decisions which prevents them may still be the correct ones,
+i.e. these are not strictly a blocking concern.
+We should still try to find alternatives before blocking these though.</p>
+<h2 id="const-parameter-types-adt_const_params"><a class="header" href="#const-parameter-types-adt_const_params">Const parameter types (<a href="https://github.com/rust-lang/rust/issues/95174"><code>adt_const_params</code></a>)</a></h2>
+<p>On stable, only integers, <code>bool</code>, and <code>char</code> is allowed as the type of const parameters.
+We want to extend this to more types in the future.</p>
 <pre><pre class="playground"><code class="language-rust">
 <span class="boring">#![allow(unused)]
-</span>#![feature(generic_const_exprs)]
-
-<span class="boring">fn main() {
-</span>struct Foo&lt;T&gt;(T);
-
-fn test() where [u8; {
-    let _: Foo&lt;[u8; 3 + 4]&gt;;
-    3
-}]: Sized {}
+</span><span class="boring">fn main() {
+</span>struct NamedType&lt;const NAME: &amp;'static str&gt; { ... }
 <span class="boring">}
 </span></code></pre></pre>
-<h4 id="status-1"><a class="header" href="#status-1">Status</a></h4>
-<p>Discussed in the following meetings: <a href="design-docs/../meetings/2021.02.23-ct-in-where-bounds.html">2021.02.23</a></p>
-<p>Not yet solved, potentially fixed by improving the query/trait system to deal with cycles. Maybe blocked on <em>chalk</em>. </p>
-<h3 id="consts-in-where-clauses-are-executed-with-inconsistent-substs"><a class="header" href="#consts-in-where-clauses-are-executed-with-inconsistent-substs">Consts in where clauses are executed with inconsistent substs</a></h3>
-<p>We evaluate consts in where clauses without first proving the where clauses of the const itself, potentially causing ICE.</p>
-<pre><pre class="playground"><code class="language-rust">#![feature(generic_const_exprs)]
+<p>Additionally, we want to support generic const parameter types and must not stabilize anything
+which prevents the addition of that in the future.</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct WithGenericArray&lt;T, const N: usize, const ARRAY: [T; N]&gt; { ... }
+<span class="boring">}
+</span></code></pre></pre>
+<p>This feature interacts with the following topics:</p>
+<ul>
+<li><a href="design/./design/constraining-generic-parameters.html">❗ Constraining generic parameters</a></li>
+<li><a href="design/./design/structural-equality.html">❗🔙 ⚖️ Structural equality</a></li>
+<li><a href="design/./design/valid-const-parameter-types.html">❗⚖️ Valid const parameter types</a></li>
+<li><a href="design/./design/valtrees.html">❗ Valtrees</a></li>
+<li><a href="design/./design/generic-const-param-types.html">❗⚖️🔄 Generic const parameter types</a></li>
+<li><a href="design/./design/exhaustiveness.html">❔ Exhaustiveness</a></li>
+<li><a href="design/./design/functions-as-const-parameters.html">❔🔙 Functions as const parameters</a></li>
+</ul>
+<h2 id="generic-constants-in-the-type-system-generic_const_exprs"><a class="header" href="#generic-constants-in-the-type-system-generic_const_exprs">Generic constants in the type system (<a href="https://github.com/rust-lang/rust/issues/76560"><code>generic_const_exprs</code></a>)</a></h2>
+<ul>
+<li>❗🔙 🔄 Unused substs</li>
+<li>❗🔄 Self referential where clauses</li>
+<li>❗🔄 Evaluation without first checking where-clauses</li>
+</ul>
+<h3 id="unifying-generic-constants"><a class="header" href="#unifying-generic-constants">Unifying generic constants</a></h3>
+<ul>
+<li><a href="design/./design/const-eval-requirements.html">❗🔙 Restrictions on const evaluation</a></li>
+<li>❗ Do not leak implementation details</li>
+<li>❗ Splitting constants during unification</li>
+<li><a href="design/./design/constraining-generic-parameters.html">❗ Constraining generic parameters</a></li>
+<li>❔⚖️ Extending unification logic</li>
+</ul>
+<h3 id="const-evaluatable-bounds"><a class="header" href="#const-evaluatable-bounds">Const evaluatable bounds</a></h3>
+<p>ALL OF THIS</p>
+<h2 id="repeat-length-backcompatability-lint-const_evaluatable_unchecked"><a class="header" href="#repeat-length-backcompatability-lint-const_evaluatable_unchecked">Repeat length backcompatability lint (<a href="https://github.com/rust-lang/rust/issues/76200"><code>const_evaluatable_unchecked</code></a>)</a></h2>
+<p>close this or wait until it's possible on stable.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="-constraining-generic-parameters"><a class="header" href="#-constraining-generic-parameters">❗ Constraining generic parameters</a></h1>
+<p>Given an impl, the compiler has to be able to decide the generic arguments used by that impl.
+Consider the following snippet:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct Weird&lt;const N: usize&gt;;
 
-trait Foo {
-    type Assoc;
-    const ASSOC: &lt;Self as Foo&gt;::Assoc;
+impl&lt;const A: usize, const B: usize&gt; Weird&lt;{ A + B }&gt; {
+    fn returns_a() -&gt; usize {
+        A
+    }
 }
-
-impl Foo for i32 {
-    type Assoc = i64;
-    const ASSOC: i64 = 3;
-}
-
-const fn bar&lt;T&gt;(x: T) -&gt; usize {
-    std::mem::forget(x);
-    3
-}
-
-fn foo&lt;T&gt;() where
-    T: Foo&lt;Assoc = T&gt;,
-    [u8; bar::&lt;T&gt;(&lt;T as Foo&gt;::ASSOC)]: Sized,
-{}
-
-fn main() {
-    foo::&lt;i32&gt;();
-}
-</code></pre></pre>
-<h4 id="status-2"><a class="header" href="#status-2">Status</a></h4>
-<p>Discussed in the following meetings: <a href="design-docs/../meetings/2021.03.23-ct-in-where-bounds.html">2021.03.23</a></p>
-<p>Probably solved by retypechecking the MIR of anonymous constants before const evaluating them.
-Therefore waiting on implementation work.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="const-eval-requirements"><a class="header" href="#const-eval-requirements">Const eval requirements</a></h1>
-<p>For this to work, const operations have to be deterministic and
-must not depend on any external state,
-at least when they are used in the type system.</p>
-<p>Using floats during CTFE is fully determinstic. So using
-them inside of the type system is fine. CTFE can however
-produce different results than what would happen on real hardware,
-but this is not a concern for const generics.</p>
-<p>Other sources of non-determinism are allocations. This non-determinism
-must however not be observed during const-evaluation (TODO: link to const-eval).
-Any references used in a constant are considered equal if their targets are equal, which is also determistic. (ref <a href="https://github.com/rust-lang/rust/issues/72396">val-trees</a>)</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="generic-const-param-types"><a class="header" href="#generic-const-param-types">Generic const param types</a></h1>
+<span class="boring">}
+</span></code></pre></pre>
+<p>When calling <code>Weird::&lt;3&gt;::returns_a()</code>, there is no way to restrict the generic parameters <code>A</code> or <code>B</code> so this has to error.
+If a generic parameter is used by an injective expression, then we should allow this. The most relevant case here are
+constructors:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct UsesOption&lt;const N: Option&lt;usize&gt;&gt;;
+impl&lt;const N: usize&gt; UsesOption&lt;{ Some(N) }&gt; {}
+<span class="boring">}
+</span></code></pre></pre>
+<p>Here it is very clear which <code>N</code> we should use given <code>UsesOption::&lt;{ Some(3) }&gt;</code>.</p>
+<h2 id="current-status"><a class="header" href="#current-status">Current status</a></h2>
+<p><strong>Blocked</strong>: Before making any decisions here we should first figure out <a href="design/./design/structural-equality.html">structural equality</a></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="-generic-const-parameter-types"><a class="header" href="#-generic-const-parameter-types">❗⚖️🔄 Generic const parameter types</a></h1>
 <p>We want to support the types of const parameters
 to depend on other generic parameters.</p>
 <pre><pre class="playground"><code class="language-rust">
@@ -958,6 +964,67 @@ or use a <code>(DefId, SubstsRef&lt;'tcx&gt;)</code> pair instead.</p>
 ending up with different types for the same const argument which would
 break stuff. </p>
 <p>Potential dangers include partially resolved types and projections.</p>
+<h2 id="status"><a class="header" href="#status">Status</a></h2>
+<p><strong>Blocked</strong>: We should first stabilize <code>feature(adt_const_params)</code>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="-restrictions-on-const-evaluation"><a class="header" href="#-restrictions-on-const-evaluation">❗🔙 Restrictions on const evaluation</a></h1>
+<p>For generic constants in the type system to be sound, const evaluation must
+not be able to differentiate between values considered equal by the type system.
+Const evaluation must also be fully deterministic and must not depend on any external state
+when used in the type system.</p>
+<h2 id="floats"><a class="header" href="#floats">Floats</a></h2>
+<p>Using floats during CTFE is fully determinstic. So using
+them inside of the type system is fine. CTFE can however
+produce different results than what would happen on real hardware,
+but this is not a concern for const generics.</p>
+<h2 id="dealing-with-references-and-allocations"><a class="header" href="#dealing-with-references-and-allocations">Dealing with references and allocations</a></h2>
+<p>Other sources of non-determinism are allocations. This non-determinism
+must however not be observed during const-evaluation (TODO: link to const-eval).</p>
+<p>Any references used in a constant are considered equal if their targets are equal, which is also determistic.
+This is needed by <a href="design/./design/valtrees.html">valtrees</a>. The specific design of valtrees also adds some other
+additional constraints to const evaluation which are listed on its page.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="--structural-equality"><a class="header" href="#--structural-equality">❗🔙 ⚖️ Structural equality</a></h1>
+<p>We have to figure out which values and types can be sensibly compared at compile time.</p>
+<h2 id="status-1"><a class="header" href="#status-1">Status</a></h2>
+<p><strong>In progress</strong>: <a href="https://github.com/lcnr/">lcnr</a> is working on this.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="-valid-const-parameter-types"><a class="header" href="#-valid-const-parameter-types">❗⚖️ Valid const parameter types</a></h1>
+<p><strong><a href="https://github.com/rust-lang/project-const-generics/issues/6">project-const-generics#6</a></strong></p>
+<p>We have to decide which types may be used as a const parameter and whether there needs to be explicit opt-in.</p>
+<h2 id="status-2"><a class="header" href="#status-2">Status</a></h2>
+<p><strong>Blocked</strong>: Waiting on <a href="design/./design/structural-equality.html">structural equality</a>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="-valtrees"><a class="header" href="#-valtrees">❗ Valtrees</a></h1>
+<p>A new representation for <code>ty::Const</code>.</p>
+<h2 id="-figure-out-how-they-interact-with-references-wrt-padding"><a class="header" href="#-figure-out-how-they-interact-with-references-wrt-padding">❗ Figure out how they interact with references wrt padding</a></h2>
+<p><strong><a href="https://github.com/rust-lang/project-const-generics/issues/20">project-const-generics#20</a></strong></p>
+<h2 id="status-3"><a class="header" href="#status-3">Status</a></h2>
+<p><strong>In Progress</strong>: <a href="https://github.com/rust-lang/project-const-generics/issues/20">b-naber</a> is working on this.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="-exhaustiveness"><a class="header" href="#-exhaustiveness">❔ Exhaustiveness</a></h1>
+<p>Whether we want to be able to unify different partial impls to consider them exhaustive.</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>trait ForBool&lt;const B: bool&gt; {}
+
+impl ForBool&lt;true&gt; for u8 {}
+impl ForBool&lt;false&gt; for u8 {}
+// Does `for&lt;const B: bool&gt; u8: ForBool&lt;B&gt;` hold?
+<span class="boring">}
+</span></code></pre></pre>
+<h2 id="status-4"><a class="header" href="#status-4">Status</a></h2>
+<p><strong>Idle</strong>: While not blocked, it may make sense to wait until we are able to <a href="design/./design/constraining-generic-parameters.html">constrain generic parameters</a>.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="-functions-as-const-parameters"><a class="header" href="#-functions-as-const-parameters">❔🔙 Functions as const parameters</a></h1>
+<p><strong><a href="https://github.com/rust-lang/project-const-generics/issues/7">project-const-generics#7</a></strong></p>
+<p>It would be nice to allow function pointers as const parameter types.</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn foo&lt;const N: fn() -&gt; usize&gt;() {}
+<span class="boring">}
+</span></code></pre></pre>
+<p>While they do have a sensible definition of structural equality at compile time,
+comparing them is not deterministic at runtime. This behavior might be fairly surprising,
+so it might be better to not allow this.</p>
+<h2 id="current-status-1"><a class="header" href="#current-status-1">Current status</a></h2>
+<p><strong>Planning/Blocked</strong>: needs <code>generic_const_exprs</code> to be closer to stable before it makes sense to start working on this.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="-rfc-drafts"><a class="header" href="#-rfc-drafts">✏️ RFC drafts</a></h1>
 <p>This folder contains drafts of RFCs that the group is preparing to submit.</p>
 <!--
