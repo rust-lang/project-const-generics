@@ -21,6 +21,7 @@
     - [❗ Constraining generic parameters](./design/constraining-generic-parameters.md)
     - [❗⚖️🔄 Generic const parameter types](./design/generic-const-param-types.md)
     - [❗🔙 Leaking implementation details](./design/leaking-implementation-details.md)
+    - [❗🔙 Opaque and transparent associated constants](./design/opaque-and-transparent-assoc-consts.md)
     - [❗🔙 Restrictions on const evaluation](./design/const-eval-requirements.md)
     - [❗🔙 ⚖️ Structural equality](./design/structural-equality.md)
     - [❗🔙 🔄 Unused substs](./design/unused-substs.md)

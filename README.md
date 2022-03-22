@@ -60,5 +60,5 @@ This repository is also an mdbook project. You can view and build it using the
 following command.
 
 ```
-mdbook serve
+mdbook-skill-tree install && mdbook serve
 ```

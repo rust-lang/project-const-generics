@@ -70,6 +70,7 @@ This feature interacts with the following topics:
 ## Generic constants in the type system ([`generic_const_exprs`](https://github.com/rust-lang/rust/issues/76560))
 
 - [❗🔙 🔄 Unused substs](./unused-substs.md)
+- ❗ Anonymous constants in binders
 - ❗🔄 Silence evaluation errors during selection
 - ❗🔄 Self referential where clauses
 - ❗🔄 Evaluation without first checking where-clauses
@@ -77,8 +78,8 @@ This feature interacts with the following topics:
 ### Unifying generic constants
 
 - [❗🔙 Restrictions on const evaluation](./const-eval-requirements.html)
-- [❗🔙 Leaking implementation details](./leaking-implementation-details.md)
-- ❗ Opaque and transparent associated constants
+- [❗🔙 Leaking implementation details](./leaking-implementation-details.html)
+- [❗🔙 Opaque and transparent associated constants](./opaque-and-transparent-assoc-consts.html)
 - ❗ Splitting constants during unification
 - [❗ Constraining generic parameters](./constraining-generic-parameters.html)
 - ❔⚖️ Extending unification logic
@@ -86,7 +87,8 @@ This feature interacts with the following topics:
 ### ❔ Const evaluatable bounds
 
 - ❗ Using subtrees to fulfill bounds
-- ❗❔ Discarding bounds and soundness
+- ❔ Discarding bounds and soundness
+- ❔ Compile time conditionals
 - ❔⚖️ Improving const evaluatability checks
 
 ALL OF THIS
