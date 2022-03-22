@@ -70,6 +70,7 @@ This feature interacts with the following topics:
 ## Generic constants in the type system ([`generic_const_exprs`](https://github.com/rust-lang/rust/issues/76560))
 
 - [❗🔙 🔄 Unused substs](./unused-substs.md)
+- ❗🔄 Silence evaluation errors during selection
 - ❗🔄 Self referential where clauses
 - ❗🔄 Evaluation without first checking where-clauses
 ### Unifying generic constants
