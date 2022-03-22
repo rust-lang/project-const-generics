@@ -96,3 +96,7 @@ ALL OF THIS
 ## Repeat length backcompatability lint ([`const_evaluatable_unchecked`](https://github.com/rust-lang/rust/issues/76200))
 
 close this or wait until it's possible on stable.
+
+## `Default` for arrays
+
+possible solutions/combinations of features to allow this. Both in std and for arbitrary crates
