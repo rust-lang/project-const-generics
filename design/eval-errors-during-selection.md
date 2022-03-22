@@ -44,7 +44,7 @@ impl<const N: usize> Trait<0> for [u8; 0] {
 ```
 
 This would make it difficult for the compiler to check that these impls are [exhaustive](./exhaustiveness.md)
-if that is something we want to add.
+if that is something we want to add. **TODO: this isn't necessarily true, elaborate here**
 
 It also might not even be enough to avoid incorrect errors during candidate selection.
 We start candidate selection by trying to unify the the `TraitRef`s of the impl and the obligation.
