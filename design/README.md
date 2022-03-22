@@ -85,6 +85,8 @@ This feature interacts with the following topics:
 ### ❔ Const evaluatable bounds
 
 - ❗ Using subtrees to fulfill bounds
+- ❗❔ Discarding bounds and soundness
+- ❔⚖️ Improving const evaluatability checks
 
 ALL OF THIS
 
