@@ -73,6 +73,7 @@ This feature interacts with the following topics:
 - ❗🔄 Silence evaluation errors during selection
 - ❗🔄 Self referential where clauses
 - ❗🔄 Evaluation without first checking where-clauses
+- ❔ Partially evaluating anonymous constants
 ### Unifying generic constants
 
 - [❗🔙 Restrictions on const evaluation](./const-eval-requirements.html)
