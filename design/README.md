@@ -78,6 +78,7 @@ This feature interacts with the following topics:
 
 - [❗🔙 Restrictions on const evaluation](./const-eval-requirements.html)
 - [❗🔙 Leaking implementation details](./leaking-implementation-details.md)
+- ❗ Opaque and transparent associated constants
 - ❗ Splitting constants during unification
 - [❗ Constraining generic parameters](./constraining-generic-parameters.html)
 - ❔⚖️ Extending unification logic
