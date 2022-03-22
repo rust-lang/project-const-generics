@@ -184,7 +184,7 @@ impl&lt;const N: usize&gt; Trait&lt;0&gt; for [u8; 0] {
 <span class="boring">}
 </span></code></pre></pre>
 <p>This would make it difficult for the compiler to check that these impls are <a href="./exhaustiveness.html">exhaustive</a>
-if that is something we want to add.</p>
+if that is something we want to add. <strong>TODO: this isn't necessarily true, elaborate here</strong></p>
 <p>It also might not even be enough to avoid incorrect errors during candidate selection.
 We start candidate selection by trying to unify the the <code>TraitRef</code>s of the impl and the obligation.
 Checking whether <code>[u8; 0]: Trait&lt;N&gt;</code> holds therefore tries to unify <code>[u8; ?0 - 1]: Trait&lt;?0&gt;</code> with <code>[u8; 0]: Trait&lt;0&gt;</code>
