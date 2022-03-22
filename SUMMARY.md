@@ -23,6 +23,7 @@
     - [❗🔙 Leaking implementation details](./design/leaking-implementation-details.md)
     - [❗🔙 Opaque and transparent associated constants](./design/opaque-and-transparent-assoc-consts.md)
     - [❗🔙 Restrictions on const evaluation](./design/const-eval-requirements.md)
+    - [❗🔄 Silence evaluation errors during selection](./design/eval-errors-during-selection.md)
     - [❗🔙 ⚖️ Structural equality](./design/structural-equality.md)
     - [❗🔙 🔄 Unused substs](./design/unused-substs.md)
     - [❗⚖️ Valid const parameter types](./design/valid-const-parameter-types.md)

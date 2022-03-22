@@ -59,29 +59,29 @@ struct WithGenericArray<T, const N: usize, const ARRAY: [T; N]> { ... }
 
 This feature interacts with the following topics:
 
-- [❗ Constraining generic parameters](./constraining-generic-parameters.html)
-- [❗🔙 ⚖️ Structural equality](./structural-equality.html)
-- [❗⚖️ Valid const parameter types](./valid-const-parameter-types.html)
-- [❗ Valtrees](./valtrees.html)
-- [❗⚖️🔄 Generic const parameter types](./generic-const-param-types.html)
-- [❔ Exhaustiveness](./design/exhaustiveness.html)
-- [❔🔙 Functions as const parameters](./functions-as-const-parameters.html)
+- [❗ Constraining generic parameters](./constraining-generic-parameters.md)
+- [❗🔙 ⚖️ Structural equality](./structural-equality.md)
+- [❗⚖️ Valid const parameter types](./valid-const-parameter-types.md)
+- [❗ Valtrees](./valtrees.md)
+- [❗⚖️🔄 Generic const parameter types](./generic-const-param-types.md)
+- [❔ Exhaustiveness](./design/exhaustiveness.md)
+- [❔🔙 Functions as const parameters](./functions-as-const-parameters.md)
 
 ## Generic constants in the type system ([`generic_const_exprs`](https://github.com/rust-lang/rust/issues/76560))
 
 - [❗🔙 🔄 Unused substs](./unused-substs.md)
 - ❗ Anonymous constants in binders
-- ❗🔄 Silence evaluation errors during selection
+- [❗🔄 Silence evaluation errors during selection](./eval-errors-during-selection.md)
 - ❗🔄 Self referential where clauses
 - ❗🔄 Evaluation without first checking where-clauses
 - ❔ Partially evaluating anonymous constants
 ### Unifying generic constants
 
-- [❗🔙 Restrictions on const evaluation](./const-eval-requirements.html)
-- [❗🔙 Leaking implementation details](./leaking-implementation-details.html)
-- [❗🔙 Opaque and transparent associated constants](./opaque-and-transparent-assoc-consts.html)
+- [❗🔙 Restrictions on const evaluation](./const-eval-requirements.md)
+- [❗🔙 Leaking implementation details](./leaking-implementation-details.md)
+- [❗🔙 Opaque and transparent associated constants](./opaque-and-transparent-assoc-consts.md)
 - ❗ Splitting constants during unification
-- [❗ Constraining generic parameters](./constraining-generic-parameters.html)
+- [❗ Constraining generic parameters](./constraining-generic-parameters.md)
 - ❔⚖️ Extending unification logic
 
 ### ❔ Const evaluatable bounds
