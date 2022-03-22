@@ -157,6 +157,7 @@ impl&lt;const N: usize&gt; Trait&lt;0&gt; for [u8; 0] {
 </span></code></pre></pre>
 <p>This would cause an error during coherence because we fail to evaluate <code>N - 1</code> when using <code>0</code> for <code>N</code>.</p>
 <h3 id="can-we-avoid-silent-ctfe-errors"><a class="header" href="#can-we-avoid-silent-ctfe-errors">Can we avoid silent CTFE errors?</a></h3>
+<p><strong>tl;dr: no</strong></p>
 <p>Changing CTFE to potentially not emit errors is not ideal and could be a new source of bugs.
 Everything else being equal, we should avoid this.</p>
 <p>Instead of using const evaluation failures to discard candidates, we could instead use conditions,
@@ -182,12 +183,85 @@ impl&lt;const N: usize&gt; Trait&lt;0&gt; for [u8; 0] {
 }
 <span class="boring">}
 </span></code></pre></pre>
-<p>This would make it very hard for the compiler to check that these impls are <a href="./exhaustiveness.html">exhaustive</a>.</p>
-<p>Additionally, this may not be enough to completely avoid silent CTFE errors, as TODO: consts in where clauses.</p>
+<p>This would make it difficult for the compiler to check that these impls are <a href="./exhaustiveness.html">exhaustive</a>
+if that is something we want to add.</p>
+<p>It also might not even be enough to avoid incorrect errors during candidate selection.
+We start candidate selection by trying to unify the the <code>TraitRef</code>s of the impl and the obligation.
+Checking whether <code>[u8; 0]: Trait&lt;N&gt;</code> holds therefore tries to unify <code>[u8; ?0 - 1]: Trait&lt;?0&gt;</code> with <code>[u8; 0]: Trait&lt;0&gt;</code>
+which - unless we explicitly avoid it - will cause us to evaluate <code>0 - 1</code> and emit an error. </p>
+<p>This issue is also prevalent for generic constants in <code>where</code>-clauses.</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>trait Foo {}
+impl&lt;const N: usize&gt; Foo for [u8; N]
+where
+    Condition&lt;{ N &gt; 0 }&gt;: IsTrue,
+    [u8; N - 1]: Foo,
+{}
+<span class="boring">}
+</span></code></pre></pre>
+<p>We would have to somehow force the compiler to first check <code>Condition&lt;{ N &gt; 0 }&gt;: IsTrue</code> before checking <code>[u8; N - 1]: Foo</code>.
+While we could add some special predicate kind for &quot;this has to evaluate to <code>true</code>&quot;, we still have the same issue in case
+we have multiple such bounds which some dependencies between them. Another option would be to check predicates in a defined order,
+e.g. in order of appearance. That is difficult to fit into the current query system and opens up a lot of difficult questions.</p>
+<p><strong>TODO</strong>: Refer to cyclic dependencies in where clauses here, that would also theoreticall be solved by relying on a syntactic order
+and should go more in-depth than this.</p>
+<p>We therefore believe that the option for CTFE errors to be silent is needed.</p>
 <h3 id="undefined-behavior-during-ctfe"><a class="header" href="#undefined-behavior-during-ctfe">Undefined behavior during CTFE</a></h3>
 <p>Whether the compiler detects undefined behavior during const evaluation is not part
 of our stability guarantees, so we <strong>must not</strong> consider some candidate to not apply due to UB by itself.</p>
-<p>It generally seems desirable to always have error when encountering UB, even if it happens during selection.</p>
+<p>We can therefore either only error if the impl would apply unless UB were to occur or always emit an error.
+Always emitting an error when encountering UB seems desirable, even if it happens during selection.</p>
+<h3 id="reaching-const_eval_limit"><a class="header" href="#reaching-const_eval_limit">Reaching <code>#[const_eval_limit]</code></a></h3>
+<p>When reaching the interpreter step limit, e.g. by using <code>loop {}</code>, it is unclear whether the code
+would compile after some additional steps. We therefore have to treat this in the same way as UB.
+Unlike UB, rejecting a candidate because the <code>#[const_eval_limit]</code> is reached would even be unsound,
+as a different crate could raise that limit and would therefore consider the candidate to hold.</p>
+<h3 id="possible-designs"><a class="header" href="#possible-designs">Possible designs</a></h3>
+<p>We're going to refer to the initial example of this document.</p>
+<h4 id="rely-on-errors-for-disjointness"><a class="header" href="#rely-on-errors-for-disjointness">Rely on errors for disjointness</a></h4>
+<p>Do we want to consider impls for <code>[u8; N - 1]</code> and <code>[u8; 0]</code> to be disjoint by themselves?</p>
+<p>Given that we have to silence the CTFE errors anyways, we could reject candidates if they contain a constant which fails to evaluate.
+If we do this, the following change can break code:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>// original version:
+const fn my_computation(n: usize) -&gt; usize {
+    if some_edge_case(n) {
+        unimplemented!()
+    } else {
+        whatever(n)
+    }
+}
+// updated version:
+const fn my_computation(n: usize) -&gt; usize {
+    if some_edge_case(n) {
+        deal_with_edge_case(n)
+    } else {
+        whatever(n)
+    }
+}
+<span class="boring">}
+</span></code></pre></pre>
+<p>It generally seems desirable to not consider such a change to be breaking. Such a case actually causing issues seems quite unlikely,
+though it definitely may happen that people write overlapping impls relying on <code>some_edge_case</code> precisely because <code>my_computation</code> panics in
+that case.</p>
+<h4 id="require-explicit-bounds"><a class="header" href="#require-explicit-bounds">Require explicit bounds</a></h4>
+<p>We could also require a <code>Condition&lt;{ N &gt; 0 }&gt;: IsTrue</code> bound for this to compile,
+potentially adding some syntactic sugar or special predicate for this.</p>
+<p>This adds some additional boilerplate to impls, though it does reduce the
+amount of implicit behavior the user has to understand. It also prevents any unintentional breakage
+when fixing buggy functions which would cause them to terminate successfully instead of panicking.
+For types like <code>[u8; N / 2 - 1]</code> the correct boolean condition to prevent this from panicking isn't immediately obvious however.
+This could introduce some errors. To avoid these we could add a lint, recommending the correct boolean condition for a given computation where possible.</p>
+<p>If a candidate contains a CTFE failure but would otherwise hold, we can either consider that candidate to be ambiguous or emit a hard
+error. The exact impact of making candidates ambiguous isn't yet clear and needs further consideration.</p>
+<h4 id="require-explicit-bounds-for-ctfe-failures-inside-of-functions"><a class="header" href="#require-explicit-bounds-for-ctfe-failures-inside-of-functions">Require explicit bounds for CTFE failures inside of functions</a></h4>
+<p>Changing the body of a constant used in the type system will be a breaking change as it may can prevent unification.
+It might therefore be sensible that errors originating directly in the anonymous constant - or transparent named constant - 
+cause the candidate to be rejected while errors originating in functions - or opaque named constants - would require an explicit bound.</p>
 <h2 id="status"><a class="header" href="#status">Status</a></h2>
 <p><strong>Idle</strong>: We can already work on this but it's also fine to wait until <code>feature(generic_const_exprs)</code> is
 closer to stable.</p>
