@@ -69,13 +69,13 @@ This feature interacts with the following topics:
 
 ## Generic constants in the type system ([`generic_const_exprs`](https://github.com/rust-lang/rust/issues/76560))
 
-- ❗🔙 🔄 Unused substs
+- [❗🔙 🔄 Unused substs](./unused-substs.md)
 - ❗🔄 Self referential where clauses
 - ❗🔄 Evaluation without first checking where-clauses
 ### Unifying generic constants
 
 - [❗🔙 Restrictions on const evaluation](./const-eval-requirements.html)
-- ❗ Do not leak implementation details
+- [❗🔙 Leaking implementation details](./leaking-implementation-details.md)
 - ❗ Splitting constants during unification
 - [❗ Constraining generic parameters](./constraining-generic-parameters.html)
 - ❔⚖️ Extending unification logic
