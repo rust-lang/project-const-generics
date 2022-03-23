@@ -22,6 +22,7 @@
     - [❗⚖️🔄 Generic const parameter types](./design/generic-const-param-types.md)
     - [❗🔙 Leaking implementation details](./design/leaking-implementation-details.md)
     - [❗🔙 Opaque and transparent associated constants](./design/opaque-and-transparent-assoc-consts.md)
+    - [❔ Overly restrictive variance](./design/overly-restrictive-variance.md)
     - [❗🔙 Restrictions on const evaluation](./design/const-eval-requirements.md)
     - [❗🔄 Silence evaluation errors during selection](./design/eval-errors-during-selection.md)
     - [❗🔙 ⚖️ Structural equality](./design/structural-equality.md)

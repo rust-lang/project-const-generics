@@ -74,9 +74,11 @@ This feature interacts with the following topics:
 - [❗🔄 Silence evaluation errors during selection](./eval-errors-during-selection.md)
 - ❗🔄 Self referential where clauses
 - ❗🔄 Evaluation without first checking where-clauses
+- [❔ Overly restrictive variance](./overly-restrictive-variance.md)
 - ❔ Partially evaluating anonymous constants
 ### Unifying generic constants
 
+- 🛠️ Syntactic unification even for concrete values
 - [❗🔙 Restrictions on const evaluation](./const-eval-requirements.md)
 - [❗🔙 Leaking implementation details](./leaking-implementation-details.md)
 - [❗🔙 Opaque and transparent associated constants](./opaque-and-transparent-assoc-consts.md)
