@@ -6,7 +6,6 @@ The goal of this group is to both improve and extend the support for const gener
 
 Improving the user experience when using and working on const generics. This includes both improvements to diagnostics for the already stabilized parts as well as adding new features:
 
-- const param defaults `struct Foo<const N: usize = 3>`
 - more const param types, most importantly user defined types and `&'static str`
 - allowing complex generic operations in constants
 
