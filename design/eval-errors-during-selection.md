@@ -17,7 +17,7 @@ This would cause an error during coherence because we fail to evaluate `N - 1` w
 The same issue also exists during candidate selection, checking whether `[u8; 0]: Trait<0>` holds
 will cause the compiler to check whether the `[u8; N - 1]: Trait<N>` impl applies. For this the compiler
 first tries to unify the two `TraitRef`s, unifying `N - 1` - after substituting `0` for `N` - with `0`.
-Note that this unification happens before we ever consider any `where`-clauses
+Note that this unification happens before we ever consider any `where`-clauses.
 
 ### Can we avoid silent CTFE errors?
 

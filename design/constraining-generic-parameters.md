@@ -14,7 +14,7 @@ impl<const A: usize, const B: usize> Weird<{ A + B }> {
 ```
 
 When calling `Weird::<3>::returns_a()`, there is no way to restrict the generic parameters `A` or `B` so this has to error.
-If a generic parameter is used by an injective expression, then we should allow this. The most relevant case here are
+If a generic parameter is used by an injective expression, then we could allow this. The most relevant case here are
 constructors:
 ```rust
 struct UsesOption<const N: Option<usize>>;
