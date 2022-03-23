@@ -219,7 +219,8 @@ would compile after some additional steps. We therefore have to treat this in th
 Unlike UB, rejecting a candidate because the <code>#[const_eval_limit]</code> is reached would even be unsound,
 as a different crate could raise that limit and would therefore consider the candidate to hold.</p>
 <h3 id="possible-designs"><a class="header" href="#possible-designs">Possible designs</a></h3>
-<p>We're going to refer to the initial example of this document.</p>
+<p>We're going to refer to the initial example of this document. All of the possible designs here rely on
+our ability to have silent CTFE errors and only differ in the way that they are used.</p>
 <h4 id="rely-on-errors-for-disjointness"><a class="header" href="#rely-on-errors-for-disjointness">Rely on errors for disjointness</a></h4>
 <p>Do we want to consider impls for <code>[u8; N - 1]</code> and <code>[u8; 0]</code> to be disjoint by themselves?</p>
 <p>Given that we have to silence the CTFE errors anyways, we could reject candidates if they contain a constant which fails to evaluate.
