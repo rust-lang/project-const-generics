@@ -18,7 +18,3 @@ not simply be ignored. We currently have a future compatability lint for this in
 [#56105](https://github.com/rust-lang/rust/issues/56105). Even once higher ranked lifetimes
 can't influence candidate selection anymore, it is unclear whether there are any other issues
 here, so this would still need some further consideration.
-
-## Status
-
-**Blocked**
