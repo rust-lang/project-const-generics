@@ -1,6 +1,6 @@
 # 📚 Design
 
-For an explanation of how const generics currently works in the compiler,
+For an explanation of how const generics currently works in the compiler
 also check out the [rustc-dev-guide](https://rustc-dev-guide.rust-lang.org/constants.html).
 
 Const generics has quite a few deep rooted issues and design challenges.
