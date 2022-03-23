@@ -1099,6 +1099,9 @@ impl&lt;const N: usize&gt; Trait&lt;0&gt; for [u8; 0] {
 <span class="boring">}
 </span></code></pre></pre>
 <p>This would cause an error during coherence because we fail to evaluate <code>N - 1</code> when using <code>0</code> for <code>N</code>.</p>
+<p>Even worse, checking whether <code>[u8; 0]: Trait&lt;0&gt;</code> holds will cause the compiler to check whether the <code>[u8; N - 1]: Trait&lt;N&gt;</code>
+impl applies. Unless we can somehow avoid this, this would also cause a CTFE error.
+This is necessary both during coherence and candidate selection for constants used in trait definitions and impls.</p>
 <h3 id="can-we-avoid-silent-ctfe-errors"><a class="header" href="#can-we-avoid-silent-ctfe-errors">Can we avoid silent CTFE errors?</a></h3>
 <p><strong>tl;dr: no</strong></p>
 <p>Changing CTFE to potentially not emit errors is not ideal and could be a new source of bugs.
