@@ -88,7 +88,8 @@ as a different crate could raise that limit and would therefore consider the can
 
 ### Possible designs
 
-We're going to refer to the initial example of this document.
+We're going to refer to the initial example of this document. All of the possible designs here rely on
+our ability to have silent CTFE errors and only differ in the way that they are used.
 
 #### Rely on errors for disjointness
 
