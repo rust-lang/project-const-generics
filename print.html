@@ -934,7 +934,7 @@ impl&lt;const A: usize, const B: usize&gt; Weird&lt;{ A + B }&gt; {
 <span class="boring">}
 </span></code></pre></pre>
 <p>When calling <code>Weird::&lt;3&gt;::returns_a()</code>, there is no way to restrict the generic parameters <code>A</code> or <code>B</code> so this has to error.
-If a generic parameter is used by an injective expression, then we should allow this. The most relevant case here are
+If a generic parameter is used by an injective expression, then we could allow this. The most relevant case here are
 constructors:</p>
 <pre><pre class="playground"><code class="language-rust">
 <span class="boring">#![allow(unused)]
@@ -1102,7 +1102,7 @@ impl&lt;const N: usize&gt; Trait&lt;0&gt; for [u8; 0] {
 The same issue also exists during candidate selection, checking whether <code>[u8; 0]: Trait&lt;0&gt;</code> holds
 will cause the compiler to check whether the <code>[u8; N - 1]: Trait&lt;N&gt;</code> impl applies. For this the compiler
 first tries to unify the two <code>TraitRef</code>s, unifying <code>N - 1</code> - after substituting <code>0</code> for <code>N</code> - with <code>0</code>.
-Note that this unification happens before we ever consider any <code>where</code>-clauses</p>
+Note that this unification happens before we ever consider any <code>where</code>-clauses.</p>
 <h3 id="can-we-avoid-silent-ctfe-errors"><a class="header" href="#can-we-avoid-silent-ctfe-errors">Can we avoid silent CTFE errors?</a></h3>
 <p><strong>tl;dr: no</strong></p>
 <p>Changing CTFE to potentially not emit errors is not ideal and could be a new source of bugs.

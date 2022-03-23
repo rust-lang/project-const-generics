@@ -155,7 +155,7 @@ impl&lt;const A: usize, const B: usize&gt; Weird&lt;{ A + B }&gt; {
 <span class="boring">}
 </span></code></pre></pre>
 <p>When calling <code>Weird::&lt;3&gt;::returns_a()</code>, there is no way to restrict the generic parameters <code>A</code> or <code>B</code> so this has to error.
-If a generic parameter is used by an injective expression, then we should allow this. The most relevant case here are
+If a generic parameter is used by an injective expression, then we could allow this. The most relevant case here are
 constructors:</p>
 <pre><pre class="playground"><code class="language-rust">
 <span class="boring">#![allow(unused)]
