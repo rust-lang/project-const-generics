@@ -14,10 +14,10 @@ impl<const N: usize> Trait<0> for [u8; 0] {
 }
 ```
 This would cause an error during coherence because we fail to evaluate `N - 1` when using `0` for `N`.
-
-Even worse, checking whether `[u8; 0]: Trait<0>` holds will cause the compiler to check whether the `[u8; N - 1]: Trait<N>`
-impl applies. Unless we can somehow avoid this, this would also cause a CTFE error.
-This is necessary both during coherence and candidate selection for constants used in trait definitions and impls.
+The same issue also exists during candidate selection, checking whether `[u8; 0]: Trait<0>` holds
+will cause the compiler to check whether the `[u8; N - 1]: Trait<N>` impl applies. For this the compiler
+first tries to unify the two `TraitRef`s, unifying `N - 1` - after substituting `0` for `N` - with `0`.
+Note that this unification happens before we ever consider any `where`-clauses
 
 ### Can we avoid silent CTFE errors?
 
