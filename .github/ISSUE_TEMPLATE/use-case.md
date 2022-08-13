@@ -2,7 +2,7 @@
 name: Use case
 about: Describe your experiences using this feature
 title: '[Use Case]: '
-labels: A-generic-exprs C-use-case
+labels: A-generic-exprs, C-use-case
 assignees: ''
 
 ---
