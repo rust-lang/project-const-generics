@@ -1,6 +1,6 @@
 ---
-name: Use case
-about: Describe your experiences using this feature
+name: Use case for `feature(generic_const_exprs)`
+about: Describe your experiences using `feature(generic_const_exprs)`
 title: '[Use Case]: '
 labels: A-generic-exprs, C-use-case
 assignees: ''
