@@ -287,8 +287,7 @@ should cause warnings and errors whenever possible.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="-status-quo-story-barbara-wants-to-implement-default-for-all-array-lengths"><a class="header" href="#-status-quo-story-barbara-wants-to-implement-default-for-all-array-lengths">😱 Status quo story: Barbara wants to implement <code>Default</code> for all array lengths</a></h1>
 <p>Barbara is working on <code>std</code>. She wants to implement <code>Default</code> for all array types. Currently, it is implemented for <code>N &lt;= 32</code> using a macro (<a href="https://doc.rust-lang.org/nightly/src/core/array/mod.rs.html#391">link</a>)</p>
 <p>She thinks &quot;Ah, I can use min-const-generics for this!&quot; and goes to write</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>impl&lt;T, const N: usize&gt; Default for [T; N]
 where
@@ -302,8 +301,7 @@ where
 <span class="boring">}
 </span></code></pre></pre>
 <p>So far so good, but then she realizes she can't figure out what to write in the body. At first she tries:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>impl&lt;T, const N: usize&gt; Default for [T; N]
 where
@@ -331,8 +329,7 @@ help: consider further restricting this bound
 </code></pre>
 <p>&quot;Ah,&quot; she realizes, &quot;this would be cloning a single value of <code>T</code>, but I want to make <code>N</code> distinct values. How can I do that?&quot;</p>
 <p>She asks on Zulip and lcnr tells her that there is this <a href="https://doc.rust-lang.org/std/primitive.array.html#method.map"><code>map</code> function  defined on arrays</a>. She could write:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>impl&lt;T, const N: usize&gt; Default for [T; N]
 where
@@ -345,8 +342,7 @@ where
 <span class="boring">}
 </span></code></pre></pre>
 <p>&quot;That code will build,&quot; lcnr warns her, &quot;but we're not going to be able to ship it. Test it and see.&quot; Barbara runs the tests and finds she is getting a failure. The following test no longer builds:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn generic&lt;T&gt;() -&gt; [T; 0] {
     Default::default()
@@ -355,8 +351,7 @@ where
 </span></code></pre></pre>
 <p>&quot;Ah,&quot; she says, &quot;I see that <code>Default</code> is implemented for any type <code>[T; 0]</code>, regardless of whether <code>T: Default</code>. That makes sense. Argh!&quot;</p>
 <p>Next she tries (this already relies on a nightly feature)</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>impl&lt;T: Trait, const N: usize&gt; Default for [T; N]
 where
@@ -374,8 +369,7 @@ impl&lt;T&gt; Trait for [T; 0] {
 <span class="boring">}
 </span></code></pre></pre>
 <p>While this does seem to compile, when trying to use it, it causes an unexpected error.</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn foo&lt;T: Trait, const N: usize&gt;() -&gt; [u8; N] {
     &lt;[T; N] as Trait&gt;::ASSOC //~ ERROR `[T; N]` does not implement `Trait`
@@ -388,8 +382,7 @@ impl&lt;T&gt; Trait for [T; 0] {
 abandon backwards compatibility in favor of a brighter future.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="-status-quo-array-split-first-method"><a class="header" href="#-status-quo-array-split-first-method">😱 Status quo: Array split first method</a></h1>
 <p>Barbara is working on her project. She has the idea to write a <code>split_first</code> function that will allow her to split out the first item from a fixed-length array; naturally, the array must be non-empty. It looks something like this:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>// Note: this method has an implied where clause that `N - 1` evaluates without 
 // erroring because `N - 1` is in the function signature
@@ -401,8 +394,7 @@ fn split_first&lt;T, const N: usize&gt;(arr: [T; N]) -&gt; (T; [T; N - 1]) {
 <span class="boring">}
 </span></code></pre></pre>
 <p>Next she wants to write a function that uses <code>split_first</code>:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn some_method&lt;const N: usize&gt;(arr: [u8; N]) {
     let (first, rest) = split_first(arr);
@@ -430,8 +422,7 @@ info: `0-1` must be evaluatable because of this where clause
   |                                                    ---------------
 </code></pre>
 <p>She also gets a compile error at another spot with a <code>[(); { N - 2; }]:</code> where clause in scope</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn some_other_method&lt;const N: usize&gt;(arr: [u8; N]) where [(); { N - 2; }]: {
     // ...
@@ -451,8 +442,7 @@ help: add a where clause to `some_method`
 <p>(rustc is not currently smart enough to know that <code>N - 2</code> being evaluatable implies <code>N - 1</code>)</p>
 <h2 id="alt-universe-with-post-mono-errors"><a class="header" href="#alt-universe-with-post-mono-errors">Alt Universe with post-mono errors</a></h2>
 <p>Barbara is working on her project. She has the idea to write a <code>split_first</code> function that will allow her to split out the first item from a fixed-length array; naturally, the array must be non-empty. It looks something like this:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>// Note: this method has no implied where clause that `N - 1` evaluates
 fn split_first&lt;T, const N: usize&gt;(arr: [T; N]) -&gt; (T; [T; N - 1]) {
@@ -463,8 +453,7 @@ fn split_first&lt;T, const N: usize&gt;(arr: [T; N]) -&gt; (T; [T; N - 1]) {
 <span class="boring">}
 </span></code></pre></pre>
 <p>Next she wants to write a function that uses <code>split_first</code>:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn some_method&lt;const N: usize&gt;(arr: [u8; N]) {
     let (first, rest) = split_first(arr);
@@ -489,8 +478,7 @@ info: `split_first` contains:
 <p><em>a huge thanks to <a href="https://github.com/Andlon">Andreas Borgen Longva</a> and <a href="https://github.com/sebcrozet">Sébastien Crozet</a> for the help with figuring this out</em></p>
 <p><a href="https://nalgebra.org/">nalgebra</a> is a linear algebra library. At the core of that library is a type <code>struct Matrix&lt;T, R, C, S&gt;</code> where <code>T</code> is the components scalar type, <code>R</code> and <code>C</code> represents the number of rows and columns and <code>S</code> represents the type of the buffer containing the data.</p>
 <p>Relevant for const generics are the parameters <code>R</code> and <code>C</code>. These are instantiated using one of the following types:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>// For matrices of know size.
 pub struct Const&lt;const R: usize&gt;;
@@ -499,8 +487,7 @@ pub struct Dynamic { value: usize }
 <span class="boring">}
 </span></code></pre></pre>
 <p>The authors of nalgebra then introduce a type alias</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>pub struct ArrayStorage&lt;T, const R: usize, const C: usize&gt;(pub [[T; R]; C]);
 /// A matrix of statically know size.
@@ -514,8 +501,7 @@ pub type SMatrix&lt;T, const R: usize, const C: usize&gt; =
 <p>While this mostly works fine, there are some disadvantages.</p>
 <h3 id="annoying-totypenum-bounds"><a class="header" href="#annoying-totypenum-bounds">Annoying <code>ToTypenum</code> bounds</a></h3>
 <p>Most notably this adds a lot of unnecessary bounds, consider the following impl:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>impl&lt;T, const R1: usize, const C1: usize, const R2: usize, const C2: usize&gt;
     ReshapableStorage&lt;T, Const&lt;R1&gt;, Const&lt;C1&gt;, Const&lt;R2&gt;, Const&lt;C2&gt;&gt; for ArrayStorage&lt;T, R1, C1&gt;
@@ -551,8 +537,7 @@ where
 <p>That's annoying. ✨</p>
 <h3 id="cannot-use-associated-constants"><a class="header" href="#cannot-use-associated-constants">Cannot use associated constants</a></h3>
 <p>It is currently also not possible to have the size of a matrix depend on associated constants:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>trait MyDimensions {
    const ROWS: usize;
@@ -572,8 +557,7 @@ fn foo&lt;Dims: MyDimensions&gt;() {
 and causing signatures to be far less readable than necessary.</p>
 <h2 id="wishlist"><a class="header" href="#wishlist">Wishlist</a></h2>
 <p>Ideally, <code>Matrix</code> could be changed to the following:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>enum Dim {
     Const(usize),
@@ -591,8 +575,7 @@ type SMatrix&lt;T, const R: usize, const C: usize&gt; =
 <p>We have to be able to use <code>Dim</code> as a const param type</p>
 <h3 id="consider-injective-expressions-to-bind-generic-params"><a class="header" href="#consider-injective-expressions-to-bind-generic-params">Consider injective expressions to bind generic params</a></h3>
 <p>With this change, <code>nalgebra</code> needs impls like the following</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>impl&lt;T, const R: usize, const C: usize&gt; for SMatrix&lt;T, R, C&gt; {
     // ...
@@ -618,8 +601,7 @@ enable this for expressions using constructors.</p>
 <p>Ideally, the compiler should figure this out by itself, or it can be emulated using specialization by manually adding an impl for all <code>Dim</code> which always gets overridden.</p>
 <h3 id="generic-const-expressions"><a class="header" href="#generic-const-expressions">Generic const expressions</a></h3>
 <p>For example when computing the <a href="https://en.wikipedia.org/wiki/Kronecker_product">Kronecker product</a> which has the following simplified signature:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>pub fn kronecker&lt;T, const R1: Dim, const C1: Dim, const R2: Dim, const C2: Dim&gt;(
     lhs: &amp;Matrix&lt;T, R1, C2&gt;,
@@ -643,8 +625,7 @@ for all arrays where <code>T: Default</code>.</p>
 <p>Shiny future of <a href="vision/shiny_future/../status_quo/array_default.html">status quo story</a></p>
 <p>Barbara is working on <code>std</code>. She saw that the newest version of rustc has had some improvements to const generics
 and decides to try implementing <code>Default</code> for all array lengths. She goes to write:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>impl&lt;T, const N: usize&gt; Default for [T; N]
 where
@@ -657,8 +638,7 @@ where
 <span class="boring">}
 </span></code></pre></pre>
 <p>The code builds just fine but then she sees a test failing:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn generic&lt;T&gt;() -&gt; [T; 0] {
     Default::default()
@@ -667,8 +647,7 @@ where
 </span></code></pre></pre>
 <p>&quot;Ah,&quot; she says, &quot;I see that Default is implemented for any type [T; 0], regardless of whether T: Default. That makes sense. Argh!&quot;</p>
 <p>Next she tries to write:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>impl&lt;T, const N: usize&gt; Default for [T; N]
 where
@@ -689,8 +668,7 @@ impl&lt;T&gt; Default for [T; 0] {
 </span></code></pre></pre>
 <p>This compiles just fine and the test is passing. She decides to submit a PR where her reviewer asks her to 
 add a test to make sure that <code>[T; N]: Default</code> holds when <code>T: Default</code> as this didn't used to work</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn exhaustive_default_impl&lt;T: Default, const N: usize&gt;() -&gt; [T; N] {
     &lt;[T; N] as Default&gt;::default()
@@ -701,8 +679,7 @@ add a test to make sure that <code>[T; N]: Default</code> holds when <code>T: De
 <div style="break-before: page; page-break-before: always;"></div><h1 id="-shiny-future-story-array-split-first-method"><a class="header" href="#-shiny-future-story-array-split-first-method">✨ Shiny future story: Array split first method</a></h1>
 <p>Shiny future of <a href="vision/shiny_future/../status_quo/split_first.html">status quo story</a></p>
 <p>Barbara is working on her project. She has the idea to write a <code>split_first</code> function that will allow her to split out the first item from a fixed-length array; naturally, the array must be non-empty. It looks something like this:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>// Note: this method has an implied where clause that `N - 1` evaluates without 
 // erroring because `N - 1` is in the function signature
@@ -714,8 +691,7 @@ fn split_first&lt;T, const N: usize&gt;(arr: [T; N]) -&gt; (T; [T; N - 1]) {
 <span class="boring">}
 </span></code></pre></pre>
 <p>Next she wants to write a function that uses <code>split_first</code>:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn some_method&lt;const N: usize&gt;(arr: [u8; N]) {
     let (first, rest) = split_first(arr);
@@ -744,8 +720,7 @@ info: `0` must be greater than `0` because of this where clause
   |                                                    ----------
 </code></pre>
 <p>Barbara has no more compile errors, even the following code is compiling:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn some_other_method&lt;const N: usize&gt;(arr: [u8; N]) where { N &gt; 1; } {
     // ...
@@ -756,8 +731,7 @@ info: `0` must be greater than `0` because of this where clause
 </span></code></pre></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="-shiny-future-story-image-type-in-rust-gpu"><a class="header" href="#-shiny-future-story-image-type-in-rust-gpu">✨ Shiny future story: Image type in rust-gpu</a></h1>
 <p>Barbara is working on rust-gpu. In that project, she has a struct <code>Image</code> that represents GPU images. There are a number of constant parameters allowing this type to be heavily customized in a number of ways. In some cases, helper methods are only available for images with particular formats. She writes the struct declaration:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>struct Image&lt;
     SampledType: SampleType&lt;FORMAT&gt;,
@@ -773,8 +747,7 @@ info: `0` must be greater than `0` because of this where clause
 </span></code></pre></pre>
 <p>Barbara gets a few compile errors about her types used as a const param not implementing <code>StructuralEq</code> so she derives that and moves on.
 She then wants to write some methods that only work for images in some specific formats:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>impl&lt;
     SampledType: SampleType&lt;FORMAT&gt;,
@@ -804,17 +777,18 @@ const fn some_condition(a: ImageDepth, m: Multisampled) -&gt; bool {
 <p>This page describes the current plans for 2021.
 It is updated on a monthly basis.</p>
 <h2 id="key"><a class="header" href="#key">Key</a></h2>
-<table><thead><tr><th>Emoji</th><th>Meaning</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>Emoji</th><th>Meaning</th></tr></thead><tbody>
 <tr><td>🥬</td><td>&quot;Healthy&quot; -- on track with the plan as described in the doc</td></tr>
 <tr><td>✏️</td><td>&quot;Planning&quot; -- Still figuring out the plan</td></tr>
 <tr><td>🤒</td><td>&quot;Worried&quot; -- things are looking a bit tricky, plans aren't working out</td></tr>
 <tr><td>🏖️</td><td>&quot;On vacation&quot; -- taking a break right now</td></tr>
 <tr><td>⚰️</td><td>We gave up on this idea =)</td></tr>
 </tbody></table>
+</div>
 <h2 id="roadmap-items"><a class="header" href="#roadmap-items">Roadmap items</a></h2>
-<table><thead><tr><th>Plan</th><th>Owner</th><th>Status</th><th>Last updated</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>Plan</th><th>Owner</th><th>Status</th><th>Last updated</th></tr></thead><tbody>
 </tbody></table>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="-how-to-vision-doc"><a class="header" href="#-how-to-vision-doc">❓ How to vision doc</a></h1>
+</div><div style="break-before: page; page-break-before: always;"></div><h1 id="-how-to-vision-doc"><a class="header" href="#-how-to-vision-doc">❓ How to vision doc</a></h1>
 <p>This page describes the process for contributing to the vision doc.</p>
 <h2 id="who-owns-this-document"><a class="header" href="#who-owns-this-document">Who owns this document?</a></h2>
 <p>This document is owned and maintained by the leads of the project-const-generics group.

@@ -142,8 +142,7 @@
                         <h1 id="-status-quo-story-barbara-wants-to-implement-default-for-all-array-lengths"><a class="header" href="#-status-quo-story-barbara-wants-to-implement-default-for-all-array-lengths">😱 Status quo story: Barbara wants to implement <code>Default</code> for all array lengths</a></h1>
 <p>Barbara is working on <code>std</code>. She wants to implement <code>Default</code> for all array types. Currently, it is implemented for <code>N &lt;= 32</code> using a macro (<a href="https://doc.rust-lang.org/nightly/src/core/array/mod.rs.html#391">link</a>)</p>
 <p>She thinks &quot;Ah, I can use min-const-generics for this!&quot; and goes to write</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>impl&lt;T, const N: usize&gt; Default for [T; N]
 where
@@ -157,8 +156,7 @@ where
 <span class="boring">}
 </span></code></pre></pre>
 <p>So far so good, but then she realizes she can't figure out what to write in the body. At first she tries:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>impl&lt;T, const N: usize&gt; Default for [T; N]
 where
@@ -186,8 +184,7 @@ help: consider further restricting this bound
 </code></pre>
 <p>&quot;Ah,&quot; she realizes, &quot;this would be cloning a single value of <code>T</code>, but I want to make <code>N</code> distinct values. How can I do that?&quot;</p>
 <p>She asks on Zulip and lcnr tells her that there is this <a href="https://doc.rust-lang.org/std/primitive.array.html#method.map"><code>map</code> function  defined on arrays</a>. She could write:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>impl&lt;T, const N: usize&gt; Default for [T; N]
 where
@@ -200,8 +197,7 @@ where
 <span class="boring">}
 </span></code></pre></pre>
 <p>&quot;That code will build,&quot; lcnr warns her, &quot;but we're not going to be able to ship it. Test it and see.&quot; Barbara runs the tests and finds she is getting a failure. The following test no longer builds:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn generic&lt;T&gt;() -&gt; [T; 0] {
     Default::default()
@@ -210,8 +206,7 @@ where
 </span></code></pre></pre>
 <p>&quot;Ah,&quot; she says, &quot;I see that <code>Default</code> is implemented for any type <code>[T; 0]</code>, regardless of whether <code>T: Default</code>. That makes sense. Argh!&quot;</p>
 <p>Next she tries (this already relies on a nightly feature)</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>impl&lt;T: Trait, const N: usize&gt; Default for [T; N]
 where
@@ -229,8 +224,7 @@ impl&lt;T&gt; Trait for [T; 0] {
 <span class="boring">}
 </span></code></pre></pre>
 <p>While this does seem to compile, when trying to use it, it causes an unexpected error.</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn foo&lt;T: Trait, const N: usize&gt;() -&gt; [u8; N] {
     &lt;[T; N] as Trait&gt;::ASSOC //~ ERROR `[T; N]` does not implement `Trait`

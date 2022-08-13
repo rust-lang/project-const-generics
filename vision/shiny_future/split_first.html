@@ -142,8 +142,7 @@
                         <h1 id="-shiny-future-story-array-split-first-method"><a class="header" href="#-shiny-future-story-array-split-first-method">✨ Shiny future story: Array split first method</a></h1>
 <p>Shiny future of <a href="../status_quo/split_first.html">status quo story</a></p>
 <p>Barbara is working on her project. She has the idea to write a <code>split_first</code> function that will allow her to split out the first item from a fixed-length array; naturally, the array must be non-empty. It looks something like this:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>// Note: this method has an implied where clause that `N - 1` evaluates without 
 // erroring because `N - 1` is in the function signature
@@ -155,8 +154,7 @@ fn split_first&lt;T, const N: usize&gt;(arr: [T; N]) -&gt; (T; [T; N - 1]) {
 <span class="boring">}
 </span></code></pre></pre>
 <p>Next she wants to write a function that uses <code>split_first</code>:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn some_method&lt;const N: usize&gt;(arr: [u8; N]) {
     let (first, rest) = split_first(arr);
@@ -185,8 +183,7 @@ info: `0` must be greater than `0` because of this where clause
   |                                                    ----------
 </code></pre>
 <p>Barbara has no more compile errors, even the following code is compiling:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn some_other_method&lt;const N: usize&gt;(arr: [u8; N]) where { N &gt; 1; } {
     // ...

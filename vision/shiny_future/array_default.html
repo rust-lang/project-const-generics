@@ -143,8 +143,7 @@
 <p>Shiny future of <a href="../status_quo/array_default.html">status quo story</a></p>
 <p>Barbara is working on <code>std</code>. She saw that the newest version of rustc has had some improvements to const generics
 and decides to try implementing <code>Default</code> for all array lengths. She goes to write:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>impl&lt;T, const N: usize&gt; Default for [T; N]
 where
@@ -157,8 +156,7 @@ where
 <span class="boring">}
 </span></code></pre></pre>
 <p>The code builds just fine but then she sees a test failing:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn generic&lt;T&gt;() -&gt; [T; 0] {
     Default::default()
@@ -167,8 +165,7 @@ where
 </span></code></pre></pre>
 <p>&quot;Ah,&quot; she says, &quot;I see that Default is implemented for any type [T; 0], regardless of whether T: Default. That makes sense. Argh!&quot;</p>
 <p>Next she tries to write:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>impl&lt;T, const N: usize&gt; Default for [T; N]
 where
@@ -189,8 +186,7 @@ impl&lt;T&gt; Default for [T; 0] {
 </span></code></pre></pre>
 <p>This compiles just fine and the test is passing. She decides to submit a PR where her reviewer asks her to 
 add a test to make sure that <code>[T; N]: Default</code> holds when <code>T: Default</code> as this didn't used to work</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn exhaustive_default_impl&lt;T: Default, const N: usize&gt;() -&gt; [T; N] {
     &lt;[T; N] as Default&gt;::default()

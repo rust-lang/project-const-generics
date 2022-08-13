@@ -143,8 +143,7 @@
 <p><em>a huge thanks to <a href="https://github.com/Andlon">Andreas Borgen Longva</a> and <a href="https://github.com/sebcrozet">Sébastien Crozet</a> for the help with figuring this out</em></p>
 <p><a href="https://nalgebra.org/">nalgebra</a> is a linear algebra library. At the core of that library is a type <code>struct Matrix&lt;T, R, C, S&gt;</code> where <code>T</code> is the components scalar type, <code>R</code> and <code>C</code> represents the number of rows and columns and <code>S</code> represents the type of the buffer containing the data.</p>
 <p>Relevant for const generics are the parameters <code>R</code> and <code>C</code>. These are instantiated using one of the following types:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>// For matrices of know size.
 pub struct Const&lt;const R: usize&gt;;
@@ -153,8 +152,7 @@ pub struct Dynamic { value: usize }
 <span class="boring">}
 </span></code></pre></pre>
 <p>The authors of nalgebra then introduce a type alias</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>pub struct ArrayStorage&lt;T, const R: usize, const C: usize&gt;(pub [[T; R]; C]);
 /// A matrix of statically know size.
@@ -168,8 +166,7 @@ pub type SMatrix&lt;T, const R: usize, const C: usize&gt; =
 <p>While this mostly works fine, there are some disadvantages.</p>
 <h3 id="annoying-totypenum-bounds"><a class="header" href="#annoying-totypenum-bounds">Annoying <code>ToTypenum</code> bounds</a></h3>
 <p>Most notably this adds a lot of unnecessary bounds, consider the following impl:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>impl&lt;T, const R1: usize, const C1: usize, const R2: usize, const C2: usize&gt;
     ReshapableStorage&lt;T, Const&lt;R1&gt;, Const&lt;C1&gt;, Const&lt;R2&gt;, Const&lt;C2&gt;&gt; for ArrayStorage&lt;T, R1, C1&gt;
@@ -205,8 +202,7 @@ where
 <p>That's annoying. ✨</p>
 <h3 id="cannot-use-associated-constants"><a class="header" href="#cannot-use-associated-constants">Cannot use associated constants</a></h3>
 <p>It is currently also not possible to have the size of a matrix depend on associated constants:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>trait MyDimensions {
    const ROWS: usize;
@@ -226,8 +222,7 @@ fn foo&lt;Dims: MyDimensions&gt;() {
 and causing signatures to be far less readable than necessary.</p>
 <h2 id="wishlist"><a class="header" href="#wishlist">Wishlist</a></h2>
 <p>Ideally, <code>Matrix</code> could be changed to the following:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>enum Dim {
     Const(usize),
@@ -245,8 +240,7 @@ type SMatrix&lt;T, const R: usize, const C: usize&gt; =
 <p>We have to be able to use <code>Dim</code> as a const param type</p>
 <h3 id="consider-injective-expressions-to-bind-generic-params"><a class="header" href="#consider-injective-expressions-to-bind-generic-params">Consider injective expressions to bind generic params</a></h3>
 <p>With this change, <code>nalgebra</code> needs impls like the following</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>impl&lt;T, const R: usize, const C: usize&gt; for SMatrix&lt;T, R, C&gt; {
     // ...
@@ -272,8 +266,7 @@ enable this for expressions using constructors.</p>
 <p>Ideally, the compiler should figure this out by itself, or it can be emulated using specialization by manually adding an impl for all <code>Dim</code> which always gets overridden.</p>
 <h3 id="generic-const-expressions"><a class="header" href="#generic-const-expressions">Generic const expressions</a></h3>
 <p>For example when computing the <a href="https://en.wikipedia.org/wiki/Kronecker_product">Kronecker product</a> which has the following simplified signature:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>pub fn kronecker&lt;T, const R1: Dim, const C1: Dim, const R2: Dim, const C2: Dim&gt;(
     lhs: &amp;Matrix&lt;T, R1, C2&gt;,

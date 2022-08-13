@@ -141,8 +141,7 @@
                     <main>
                         <h1 id="-status-quo-array-split-first-method"><a class="header" href="#-status-quo-array-split-first-method">😱 Status quo: Array split first method</a></h1>
 <p>Barbara is working on her project. She has the idea to write a <code>split_first</code> function that will allow her to split out the first item from a fixed-length array; naturally, the array must be non-empty. It looks something like this:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>// Note: this method has an implied where clause that `N - 1` evaluates without 
 // erroring because `N - 1` is in the function signature
@@ -154,8 +153,7 @@ fn split_first&lt;T, const N: usize&gt;(arr: [T; N]) -&gt; (T; [T; N - 1]) {
 <span class="boring">}
 </span></code></pre></pre>
 <p>Next she wants to write a function that uses <code>split_first</code>:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn some_method&lt;const N: usize&gt;(arr: [u8; N]) {
     let (first, rest) = split_first(arr);
@@ -183,8 +181,7 @@ info: `0-1` must be evaluatable because of this where clause
   |                                                    ---------------
 </code></pre>
 <p>She also gets a compile error at another spot with a <code>[(); { N - 2; }]:</code> where clause in scope</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn some_other_method&lt;const N: usize&gt;(arr: [u8; N]) where [(); { N - 2; }]: {
     // ...
@@ -204,8 +201,7 @@ help: add a where clause to `some_method`
 <p>(rustc is not currently smart enough to know that <code>N - 2</code> being evaluatable implies <code>N - 1</code>)</p>
 <h2 id="alt-universe-with-post-mono-errors"><a class="header" href="#alt-universe-with-post-mono-errors">Alt Universe with post-mono errors</a></h2>
 <p>Barbara is working on her project. She has the idea to write a <code>split_first</code> function that will allow her to split out the first item from a fixed-length array; naturally, the array must be non-empty. It looks something like this:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>// Note: this method has no implied where clause that `N - 1` evaluates
 fn split_first&lt;T, const N: usize&gt;(arr: [T; N]) -&gt; (T; [T; N - 1]) {
@@ -216,8 +212,7 @@ fn split_first&lt;T, const N: usize&gt;(arr: [T; N]) -&gt; (T; [T; N - 1]) {
 <span class="boring">}
 </span></code></pre></pre>
 <p>Next she wants to write a function that uses <code>split_first</code>:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>fn some_method&lt;const N: usize&gt;(arr: [u8; N]) {
     let (first, rest) = split_first(arr);

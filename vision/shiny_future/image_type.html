@@ -141,8 +141,7 @@
                     <main>
                         <h1 id="-shiny-future-story-image-type-in-rust-gpu"><a class="header" href="#-shiny-future-story-image-type-in-rust-gpu">✨ Shiny future story: Image type in rust-gpu</a></h1>
 <p>Barbara is working on rust-gpu. In that project, she has a struct <code>Image</code> that represents GPU images. There are a number of constant parameters allowing this type to be heavily customized in a number of ways. In some cases, helper methods are only available for images with particular formats. She writes the struct declaration:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>struct Image&lt;
     SampledType: SampleType&lt;FORMAT&gt;,
@@ -158,8 +157,7 @@
 </span></code></pre></pre>
 <p>Barbara gets a few compile errors about her types used as a const param not implementing <code>StructuralEq</code> so she derives that and moves on.
 She then wants to write some methods that only work for images in some specific formats:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>impl&lt;
     SampledType: SampleType&lt;FORMAT&gt;,
