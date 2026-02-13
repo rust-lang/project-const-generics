@@ -1,7 +1,7 @@
 ---
-name: adt_const_params Experience Report
+name: Experience Report for `adt_const_params`
 about: Describe your experiences using `adt_const_params`
-title: '[adt_const_params Experience Report]: '
+title: '[Experience Report]: '
 labels: A-adt_const_params, C-experience-report
 assignees: ''
 ---

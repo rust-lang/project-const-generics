@@ -1,7 +1,7 @@
 ---
-name: mGCA/oGCA Experience Report
+name: Experience Report for mGCA/oGCA
 about: Describe your experiences using `min_generic_const_args`/`opaque_generic_const_args`
-title: '[mGCA/oGCA Experience Report]: '
+title: '[Experience Report]: '
 labels: A-min_generic_const_args, C-experience-report
 assignees: ''
 
