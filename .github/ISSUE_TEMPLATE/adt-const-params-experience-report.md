@@ -1,10 +1,9 @@
 ---
-name: Feedback on required public fields
-about: Feedback on the requirement for ADTs to have fields no more private than the ADT itself
-title: '[Public Fields Feedback]: '
-labels: A-adt_const_params, C-feedback-public-fields, C-experience-report
+name: adt_const_params Experience Report
+about: Describe your experiences using `adt_const_params`
+title: '[adt_const_params Experience Report]: '
+labels: A-adt_const_params, C-experience-report
 assignees: ''
-
 ---
 
 ### Code description
