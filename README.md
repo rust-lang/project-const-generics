@@ -59,10 +59,6 @@ yourself over there and ask us any questions you have.
 This repository is also an mdbook project. You can view and build it using the
 following command.
 
-> [!NOTE]  
-> Only `mdbook` v0.4 is currently supported. If you're using v0.5, install v0.4,
-> for example, via `cargo install mdbook --version ^0.4 --force`.
-
 ```
-mdbook-skill-tree install && mdbook serve
+mdbook serve
 ```
