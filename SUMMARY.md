@@ -18,4 +18,5 @@
     - [❓How to vision doc](./vision/how_to_vision_doc.md) 
 - [🔍 Meetings](./meetings/README.md)
 - [✏️ Draft RFCs](./draft-rfcs/README.md)
-s
+- [📁 Documents](./documents/README.md)
+    - [📝 The plan for `min_generic_const_args`](./documents/min_const_generics_plan.md)
