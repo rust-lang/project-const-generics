@@ -1,14 +1,53 @@
+name: mdBook
+
 on:
+  pull_request:
   push:
     branches:
       - master
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
 jobs:
-  ci:
-    name: CI
+  build:
+    name: Build mdBook
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v2
-      - uses: XAMPPRocky/deploy-mdbook@v1
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - uses: Swatinem/rust-cache@v2.9.1
+      - run: cargo install mdbook --version 0.5.2
+
+      - name: Build book
+        run: mdbook build
+
+      - name: Upload Pages artifact
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        uses: actions/upload-pages-artifact@v5
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          path: ./book
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v5
