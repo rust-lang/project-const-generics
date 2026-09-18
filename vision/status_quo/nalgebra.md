@@ -2,11 +2,11 @@
 
 *a huge thanks to [Andreas Borgen Longva](https://github.com/Andlon) and [Sébastien Crozet](https://github.com/sebcrozet) for the help with figuring this out*
 
-[nalgebra](https://nalgebra.org/) is a linear algebra library. At the core of that library is a type `struct Matrix<T, R, C, S>` where `T` is the components scalar type, `R` and `C` represents the number of rows and columns and `S` represents the type of the buffer containing the data.
+[nalgebra](https://nalgebra.org/) is a linear algebra library. At the core of that library is a type `struct Matrix<T, R, C, S>` where `T` is the components scalar type, `R` and `C` represent the number of rows and columns and `S` represents the type of the buffer containing the data.
 
 Relevant for const generics are the parameters `R` and `C`. These are instantiated using one of the following types:
 ```rust
-// For matrices of know size.
+// For matrices of known size.
 pub struct Const<const R: usize>;
 // For matrices with a size only known at runtime.
 pub struct Dynamic { value: usize }
@@ -15,7 +15,7 @@ pub struct Dynamic { value: usize }
 The authors of nalgebra then introduce a type alias
 ```rust
 pub struct ArrayStorage<T, const R: usize, const C: usize>(pub [[T; R]; C]);
-/// A matrix of statically know size.
+/// A matrix of statically known size.
 pub type SMatrix<T, const R: usize, const C: usize> =
     Matrix<T, Const<R>, Const<C>, ArrayStorage<T, R, C>>;
 ```
@@ -62,7 +62,7 @@ where
 }
 ```
 
-As these bounds infect the public API, they are also a large backwards compatability concern.
+As these bounds infect the public API, they are also a large backwards compatibility concern.
 
 ### `ToTypenum` is only implemented up to fixed size
 
@@ -82,7 +82,7 @@ fn foo<Dims: MyDimensions>() {
     let matrix: SMatrix<f64, Dims::ROWS, Dims::COLS> = SMatrix::zeros();
 }
 ```
-While this can be avoided by going to back to `typenum` and using associated types, this adds a lot of unnecessary bounds and inpacts all of the code dealing with it.
+While this can be avoided by going back to `typenum` and using associated types, this adds a lot of unnecessary bounds and inpacts all of the code dealing with it.
 
 ### Generic parameters aren't exhaustive
 
@@ -141,7 +141,7 @@ error[E0207]: the const parameter `R` is not constrained by the impl trait, self
 
 ### Merge partial impls to be exhaustive
 
-By adding one trait impl impl for `Dim::Dynamic` and one for `Dim::Const(N)`, it should be enough to consider that trait to be implemented for all `Dim`.
+By adding one trait impl for `Dim::Dynamic` and one for `Dim::Const(N)`, it should be enough to consider that trait to be implemented for all `Dim`.
 
 Ideally, the compiler should figure this out by itself, or it can be emulated using specialization by manually adding an impl for all `Dim` which always gets overridden.
 
