@@ -2,7 +2,7 @@
 
 *a huge thanks to [Andreas Borgen Longva](https://github.com/Andlon) and [Sébastien Crozet](https://github.com/sebcrozet) for the help with figuring this out*
 
-[nalgebra](https://nalgebra.org/) is a linear algebra library. At the core of that library is a type `struct Matrix<T, R, C, S>` where `T` is the components scalar type, `R` and `C` represent the number of rows and columns and `S` represents the type of the buffer containing the data.
+[nalgebra](https://nalgebra.org/) is a linear algebra library. At the core of that library is a type `struct Matrix<T, R, C, S>` where `T` is the components' scalar type, `R` and `C` represent the number of rows and columns and `S` represents the type of the buffer containing the data.
 
 Relevant for const generics are the parameters `R` and `C`. These are instantiated using one of the following types:
 ```rust
@@ -82,7 +82,7 @@ fn foo<Dims: MyDimensions>() {
     let matrix: SMatrix<f64, Dims::ROWS, Dims::COLS> = SMatrix::zeros();
 }
 ```
-While this can be avoided by going back to `typenum` and using associated types, this adds a lot of unnecessary bounds and inpacts all of the code dealing with it.
+While this can be avoided by going back to `typenum` and using associated types, this adds a lot of unnecessary bounds and impacts all of the code dealing with it.
 
 ### Generic parameters aren't exhaustive
 
