@@ -18,3 +18,7 @@ Describe what aspects of `adt_const_params` worked well for you.
 ### What worked less well
 
 Describe what aspects of `adt_const_params` did not work well for you. Perhaps they were confusing, or you weren't able to get your code to compile the way you wanted? Or perhaps it was just not ergonomic.
+
+### Other stuff
+
+If you have thoughts that don't fit neatly into any of the above categories feel free to write them here :3
